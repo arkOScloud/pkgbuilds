@@ -1,0 +1,6 @@
+#
+# arkOS repository mirrorlist
+# 2013-03-07
+#
+
+Server = http://pkg.ark-os.org/$repo

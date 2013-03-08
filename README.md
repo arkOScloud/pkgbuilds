@@ -1,5 +1,7 @@
-![ARK](https://files.citizenweb.is/img/logo-ark.png)
+# arkOS Repositories
 
-ARK is a project to produce custom setup scripts and guides for hosting decentralized server infrastructure on a Raspberry Pi. The goal is to reduce the overhead for owning a completely self-hosted server by as much as possible. Thus making the Raspberry Pi into an easy-to-use and easy-to-manage server solution is key.
+This repo is for files and software that are used for the production or maintenance of the arkOS distribution.
 
-More details to come.
+### PKGBUILDs
+
+PKGBUILD files for forked packages that are modified by arkOS maintainters are stored here. These files are needed by `makepkg` to create repository packages. They are then uploaded to official mirrors from there.

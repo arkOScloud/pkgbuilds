@@ -1,0 +1,7 @@
+NAME="arkOS"
+ID=arkos
+ID_LIKE="archarm arch"
+PRETTY_NAME="arkOS"
+ANSI_COLOR="0;32"
+HOME_URL="https://ark-os.org/"
+SUPPORT_URL="https://support.arkos.org"
