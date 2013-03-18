@@ -1,7 +1,7 @@
 #
 # arkOS repository mirrorlist
-# 2013-03-07
+# 2013-03-18
 #
 
 # United States
-Server = https://us.pkg.ark-os.org/$repo
+Server = https://uspx.ark-os.org/$repo
