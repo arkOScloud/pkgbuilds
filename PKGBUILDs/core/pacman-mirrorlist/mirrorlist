@@ -3,4 +3,5 @@
 # 2013-03-07
 #
 
-Server = http://pkg.ark-os.org/$repo
+# United States
+Server = https://us.pkg.ark-os.org/$repo
