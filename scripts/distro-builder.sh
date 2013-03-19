@@ -2,7 +2,7 @@
 mkdir -p $1
 echo -e "\033[1mInstalling packages...\033[0m"
 mkdir -p $1/var/lib/pacman
-pacman -Syyf --noconfirm --noprogressbar -r $1 base base-devel binutils dosfstools e2fsprogs iptables linux linux-headers localepurge mkinitcpio mkinitcpio-busybox ntp raspberrypi-firmware systemd wpa_supplicant wpa_actiond wget 
+pacman -Syyf --noconfirm --noprogressbar -r $1 base base-devel binutils dosfstools dialog e2fsprogs ifplugd iptables linux linux-headers localepurge mkinitcpio mkinitcpio-busybox ntp openssh raspberrypi-firmware systemd wpa_supplicant wpa_actiond wget 
 
 # Add root password and set up special files
 echo -e "\033[1mSetting the password to 'root' and cleaning up:\033[0m"
@@ -34,6 +34,9 @@ echo "en_US" >> $1/etc/locale.nopurge
 echo "en_US.UTF-8" >> $1/etc/locale.nopurge
 chroot $1/ /usr/sbin/localepurge.config
 chroot $1/ /usr/sbin/localepurge
+
+# Set timezone to UTC by default
+chroot $1/ ln -s /usr/share/zoneinfo/UTC etc/localtime
 
 # Add basic file for automatic ethernet connection on startup
 echo "CONNECTION='ethernet'" >> $1/etc/network.d/ethernet-eth0
