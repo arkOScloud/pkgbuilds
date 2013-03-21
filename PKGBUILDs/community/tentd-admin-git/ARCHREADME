@@ -1,0 +1,54 @@
+Now that your packages are installed properly, you must create a 
+PostgreSQL user, initialize the database, and run the command to start 
+the server.
+
+If this is the first time you've installed or run PostgreSQL, run the 
+following commands to setup and initialize the database directory:
+
+    # sudo mkdir /var/lib/postgres/data
+    # sudo chown -c postgres:postgres /var/lib/postgres/data
+    # sudo initdb -D ‘/var/lib/postgres/data’
+    # sudo systemctl start postgresql
+    # sudo systemctl enable postgresql
+
+
+Assign your PostgreSQL an admin password:
+
+    # sudo -u postgres psql postgres
+    postgres=# \password postgres
+
+
+Create a PostgreSQL user with which you can access the database. This 
+will match the username you use to connect to your Tent server. It is 
+recommended that this username match that of your Unix user.
+
+    # sudo -u postgres createuser $username
+
+
+Run the following to create the database and to set your database user's 
+password. This will match the password you use to connect to your Tent 
+server. If you chose a username other than that of your Unix user, add 
+"sudo -u USERNAME" before the "psql" command.
+
+    # createdb tent_server
+    # psql tent_server
+    tent_server=> ALTER ROLE $username ENCRYPTED PASSWORD ‘$password‘;
+    tent_server=> \q
+
+
+Finally, go to /var/lib/tentd-admin and initialize the database, then 
+you're ready to run the server.
+
+    # cd /var/lib/tentd-admin
+    # DATABASE_URL=postgres://localhost/tent_server bundle exec rake db:migrate
+
+
+The following command enables the server (all on one line):
+
+# DATABASE_URL=postgres://localhost/tent_server ADMIN_USERNAME=username 
+ADMIN_PASSWORD=password bundle exec puma -p 3000
+
+
+Note that the server cannot be run in the background this way. For more 
+information, or to see more important environment variables based on 
+your situation, visit the README at https://github.com/tent/tentd-admin.

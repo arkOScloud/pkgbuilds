@@ -1,0 +1,29 @@
+pkgname=tent-status-git
+
+post_install() {
+
+cd /var/lib/tent-status
+sudo -u $SUDO_USER bundle install
+
+cat << EOM
+
+Note:
+==> Follow the instructions included in /var/lib/tent-status/ARCHREADME
+==> for where to proceed from here.
+==> 
+==> Consult the project page at https://github.com/tent/tent-status for
+==> bug reports or questions. Or contact the AUR package maintainer for 
+==> bugs with this installer.
+==>
+==> Happy camping!
+
+EOM
+}
+
+post_upgrade() {
+
+cd /var/lib/tent-status
+sudo -u $SUDO_USER bundle install
+
+}
+
