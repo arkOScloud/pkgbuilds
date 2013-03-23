@@ -3,5 +3,8 @@
 # 2013-03-18
 #
 
-# United States
+# New York (United States)
 Server = https://uspx.ark-os.org/$repo
+
+# Amsterdam (The Netherlands)
+#Server = https://eupx.ark-os.org/$repo
