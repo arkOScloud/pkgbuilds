@@ -22,7 +22,7 @@ source=('group' 'issue' 'nsswitch.conf' 'securetty' 'host.conf' 'ld.so.conf'
         'passwd' 'shadow' 'fstab' 'crypttab' 'hosts' 'motd' 'os-release' 'resolv.conf'
         'shells' 'gshadow' 'profile' 'modprobe.d.usb-load-ehci-first' 'arkos.7.txt'
 	'locale.sh')
-md5sums=('e43ceeba08f6f88e2331d9c61ffcbeef'
+md5sums=('7b8e40f8f793e60f471511641bb1c9f2'
          'aa0ad59fa3a49f3fbf5c9c542e4434ed'
          '9e4533df61f0c82d6b2e2371f7376282'
          '4c4540eeb748bf1f71d631b8c1dcf0b3'
@@ -37,7 +37,7 @@ md5sums=('e43ceeba08f6f88e2331d9c61ffcbeef'
          '1de6cb09519de8891ed0bdade2fa5d7a'
          '6f48288b6fcaf0065fcb7b0e525413e0'
          '22518e922891f9359f971f4f5b4e793c'
-         'fad447225bf09b8c4432f0e26c15895d'
+         'f45389e116ab0b9e9968287617d27c7d'
          '2f629f717697ee572c1213b4ed1b1ef8'
          'a8a962370cd0128465d514e6a1f74130'
          '18a2cc35ec4b6344414947d4d1da47b1'
@@ -120,4 +120,3 @@ package() {
 	done
 	ln -s ../man usr/local/share/man
 }
-
