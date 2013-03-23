@@ -4,11 +4,9 @@
 # arkOS: Jacob Cook <jacob@ark-os.org>
 #  - modifed os-release and added manpage for arkOS
 
-noautobuild=1
-
 pkgname=filesystem
 pkgver=2013.03
-pkgrel=1
+pkgrel=2
 pkgdesc='Base filesystem'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -24,6 +22,26 @@ source=('group' 'issue' 'nsswitch.conf' 'securetty' 'host.conf' 'ld.so.conf'
         'passwd' 'shadow' 'fstab' 'crypttab' 'hosts' 'motd' 'os-release' 'resolv.conf'
         'shells' 'gshadow' 'profile' 'modprobe.d.usb-load-ehci-first' 'arkos.7.txt'
 	'locale.sh')
+md5sums=('e43ceeba08f6f88e2331d9c61ffcbeef'
+         'aa0ad59fa3a49f3fbf5c9c542e4434ed'
+         '9e4533df61f0c82d6b2e2371f7376282'
+         '4c4540eeb748bf1f71d631b8c1dcf0b3'
+         'f28150d4c0b22a017be51b9f7f9977ed'
+         '6e488ffecc8ba142c0cf7e2d7aeb832e'
+         '1cfd310dff0804a7d21958487c32a3b1'
+         '2ef2429c2c98d0883906aa6f5363be80'
+         '35b0a161af6fb31e09e9ed16ced18381'
+         '237583a96187905bf78db86987c30317'
+         'a4d6818082b72b087ee1d9407ea6604e'
+         'd41d8cd98f00b204e9800998ecf8427e'
+         '1de6cb09519de8891ed0bdade2fa5d7a'
+         '6f48288b6fcaf0065fcb7b0e525413e0'
+         '22518e922891f9359f971f4f5b4e793c'
+         'fad447225bf09b8c4432f0e26c15895d'
+         '2f629f717697ee572c1213b4ed1b1ef8'
+         'a8a962370cd0128465d514e6a1f74130'
+         '18a2cc35ec4b6344414947d4d1da47b1'
+         'bb96e7e7f7d1598acbc15d1a79691429')
 
 build() {
 	cd ${srcdir}
@@ -84,6 +102,10 @@ package() {
 	# add lib symlinks
 	#
 	ln -s usr/lib ${pkgdir}/lib
+	[[ ${CARCH} = "x86_64" ]] && (
+		ln -s usr/lib ${pkgdir}/lib64
+		ln -s lib ${pkgdir}/usr/lib64
+	)
 
 	#
 	# install arkos(7) manpage
@@ -98,24 +120,4 @@ package() {
 	done
 	ln -s ../man usr/local/share/man
 }
-md5sums=('c61f6ac4f6377108e59879f203f18633'
-         'aa0ad59fa3a49f3fbf5c9c542e4434ed'
-         '9e4533df61f0c82d6b2e2371f7376282'
-         '4c4540eeb748bf1f71d631b8c1dcf0b3'
-         'f28150d4c0b22a017be51b9f7f9977ed'
-         '6e488ffecc8ba142c0cf7e2d7aeb832e'
-         '1cfd310dff0804a7d21958487c32a3b1'
-         '2ef2429c2c98d0883906aa6f5363be80'
-         '35b0a161af6fb31e09e9ed16ced18381'
-         '237583a96187905bf78db86987c30317'
-         'a4d6818082b72b087ee1d9407ea6604e'
-         'd41d8cd98f00b204e9800998ecf8427e'
-         '1de6cb09519de8891ed0bdade2fa5d7a'
-         '6f48288b6fcaf0065fcb7b0e525413e0'
-         '22518e922891f9359f971f4f5b4e793c'
-         'ffe983034b8004989b8c3df97ec91095'
-         '2f629f717697ee572c1213b4ed1b1ef8'
-         'a8a962370cd0128465d514e6a1f74130'
-         '18a2cc35ec4b6344414947d4d1da47b1'
-         'bb96e7e7f7d1598acbc15d1a79691429')
 
