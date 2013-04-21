@@ -14,7 +14,7 @@ arch=('armv6h')
 url="http://www.archlinux.org/pacman/"
 license=('GPL')
 groups=('base' 'base-devel')
-depends=('bash>=4.2.042-2' 'glibc>=2.17.2' 'libarchive>=3.1.2' 'curl>=7.19.4'
+depends=('bash>=4.2.042-2' 'glibc>=2.17-2' 'libarchive>=3.1.2' 'curl>=7.19.4'
          'gpgme' 'pacman-mirrorlist')
 checkdepends=('python2' 'fakechroot')
 optdepends=('fakeroot: for makepkg usage as normal user')

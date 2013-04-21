@@ -2,7 +2,7 @@
 mkdir -p $1
 echo -e "\033[1mInstalling packages...\033[0m"
 mkdir -p $1/var/lib/pacman
-pacman -Syyf --noconfirm --noprogressbar -r $1 base base-devel binutils dosfstools dialog e2fsprogs ifplugd iptables linux linux-headers localepurge mkinitcpio mkinitcpio-busybox ntp openssh raspberrypi-firmware systemd wpa_supplicant wpa_actiond wget 
+pacman -Syy --force --noconfirm --noprogressbar -r $1 base base-devel binutils dosfstools dialog e2fsprogs genesis ifplugd iptables linux linux-headers localepurge mkinitcpio mkinitcpio-busybox netctl ntp openssh raspberrypi-firmware syslog-ng systemd wpa_supplicant wpa_actiond wget 
 
 # Add root password and set up special files
 echo -e "\033[1mSetting the password to 'root' and cleaning up:\033[0m"
@@ -16,11 +16,6 @@ chroot $1/ mknod -m 0644 /dev/urandom c 1 9
 
 # Create manpages DB (this can take awhile)
 chroot $1/ /usr/bin/mandb --quiet
-
-# Enable important system services on startup
-ln -s '/usr/lib/systemd/system/sshd.service' '$1/etc/systemd/system/multi-user.target.wants/sshd.service'
-ln -s '/usr/lib/systemd/system/ntpd.service' '$1/etc/systemd/system/multi-user.target.wants/ntpd.service'
-ln -s '/usr/lib/systemd/system/net-auto-wired.service' '$1/etc/systemd/system/multi-user.target.wants/net-auto-wired.service'
 
 # Generate locale
 rm $1/etc/locale.gen
@@ -39,10 +34,17 @@ chroot $1/ /usr/sbin/localepurge
 chroot $1/ ln -s /usr/share/zoneinfo/UTC etc/localtime
 
 # Add basic file for automatic ethernet connection on startup
-echo "CONNECTION='ethernet'" >> $1/etc/network.d/ethernet-eth0
-echo "DESCRIPTION='A basic dhcp ethernet connection using iproute'" >> $1/etc/network.d/ethernet-eth0
-echo "INTERFACE='eth0'" >> $1/etc/network.d/ethernet-eth0
-echo "IP='dhcp'" >> $1/etc/network.d/ethernet-eth0
+echo "Connection='ethernet'" >> $1/etc/netctl/ethernet
+echo "Description='A basic dhcp ethernet connection using iproute'" >> $1/etc/network.d/ethernet-eth0
+echo "Interface='eth0'" >> $1/etc/netctl/ethernet
+echo "IP='dhcp'" >> $1/etc/netctl/ethernet
+
+echo "arkos" >> $1/etc/hostname
+
+# Enable important system services on startup
+chroot $1/ ln -s '/usr/lib/systemd/system/sshd.service' '$1/etc/systemd/system/multi-user.target.wants/sshd.service'
+chroot $1/ ln -s '/usr/lib/systemd/system/ntpd.service' '$1/etc/systemd/system/multi-user.target.wants/ntpd.service'
+chroot $1/ netctl enable ethernet
 
 # Clear pacman cache files
 chroot $1/ yes | /usr/bin/pacman -Scc
