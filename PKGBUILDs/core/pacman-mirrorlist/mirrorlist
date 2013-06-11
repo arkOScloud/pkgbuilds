@@ -4,7 +4,7 @@
 #
 
 # New York (United States)
-Server = https://uspx.ark-os.org/$repo
+Server = http://uspx.arkos.io/$repo
 
 # Amsterdam (The Netherlands)
-#Server = https://eupx.ark-os.org/$repo
+#Server = http://eupx.arkos.io/$repo
