@@ -7,8 +7,8 @@
 # - makepkg.conf: change C/CXX/LDFLAGS
 
 pkgname=pacman
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="A library-based package manager with dependency support"
 arch=('armv6h')
 url="http://www.archlinux.org/pacman/"
@@ -27,10 +27,10 @@ options=(!libtool)
 source=(ftp://ftp.archlinux.org/other/pacman/$pkgname-$pkgver.tar.gz{,.sig}
         pacman.conf
         makepkg.conf)
-md5sums=('a0f2b3148bee4784f21cf373cf59a0bc'
+md5sums=('72a1688ff73c1c0b79d8f87b3793d446'
          'SKIP'
          '1102d7fc0ac08c75609e2b57467eeea9'
-         'b53385560a06aac79f567ee8ac02895c')
+         'dbc2599202608802e4d5515f8b4241c6')
 
 # keep an upgrade path for older installations
 PKGEXT='.pkg.tar.gz'
