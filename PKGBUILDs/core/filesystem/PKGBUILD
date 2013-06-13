@@ -1,11 +1,13 @@
 # $Id$
 # Maintainer: Tom Gundersen <teg@jklm.no>
 
-# arkOS: Jacob Cook <jacob@ark-os.org>
+# arkOS: Jacob Cook <jacob@citizenweb.is>
 #  - modifed os-release and added manpage for arkOS
 
+noautobuild=1
+
 pkgname=filesystem
-pkgver=2013.04
+pkgver=2013.06
 pkgrel=1
 pkgdesc='Base filesystem'
 arch=('i686' 'x86_64')
@@ -38,7 +40,7 @@ md5sums=('7b8e40f8f793e60f471511641bb1c9f2'
          '6f48288b6fcaf0065fcb7b0e525413e0'
          '22518e922891f9359f971f4f5b4e793c'
          'f45389e116ab0b9e9968287617d27c7d'
-         '2f629f717697ee572c1213b4ed1b1ef8'
+         'da66f17c7c766c006d9e341cf43ae4ac'
          'a8a962370cd0128465d514e6a1f74130'
          '18a2cc35ec4b6344414947d4d1da47b1'
          'bb96e7e7f7d1598acbc15d1a79691429')
@@ -91,7 +93,7 @@ package() {
 	#
 	# setup /usr hierarchy
 	#
-	for d in bin include lib sbin share/misc src; do
+	for d in bin include lib share/misc src; do 
 		install -d -m755 usr/${d}
 	done
 	for d in $(seq 8); do
@@ -106,6 +108,13 @@ package() {
 		ln -s usr/lib ${pkgdir}/lib64
 		ln -s lib ${pkgdir}/usr/lib64
 	)
+
+	#
+	# add bin symlinks
+  	#
+  	ln -s usr/bin ${pkgdir}/bin
+  	ln -s usr/bin ${pkgdir}/sbin
+  	ln -s bin ${pkgdir}/usr/sbin
 
 	#
 	# install arkos(7) manpage
