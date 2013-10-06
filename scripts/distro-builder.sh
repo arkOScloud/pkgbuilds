@@ -2,7 +2,7 @@
 mkdir -p $1
 echo -e "\033[1mInstalling packages...\033[0m"
 mkdir -p $1/var/lib/pacman
-pacman -Syy --force --noconfirm --noprogressbar -r $1/ base base-devel binutils dosfstools dialog e2fsprogs genesis ifplugd iptables linux linux-headers localepurge mkinitcpio mkinitcpio-busybox netctl nginx ntp openssh raspberrypi-firmware syslog-ng systemd wpa_supplicant wpa_actiond wget python2-imaging python2-psutil 
+pacman -Syy --force --noconfirm --noprogressbar -r $1/ base base-devel binutils dosfstools dialog e2fsprogs genesis ifplugd iptables linux linux-headers localepurge mkinitcpio mkinitcpio-busybox netctl nginx ntp openssh raspberrypi-firmware syslog-ng systemd wpa_supplicant wpa_actiond wget python2-imaging python2-psutil logrunner beacon
 
 # Add root password and set up special files
 echo -e "\033[1mSetting the password to 'root' and making special files:\033[0m"
@@ -42,13 +42,16 @@ echo "Connection='ethernet'" >> $1/etc/netctl/ethernet
 echo "Description='A basic dhcp ethernet connection using iproute'" >> $1/etc/network.d/ethernet-eth0
 echo "Interface='eth0'" >> $1/etc/netctl/ethernet
 echo "IP='dhcp'" >> $1/etc/netctl/ethernet
+echo "ExecUpPost='/usr/bin/ntpd -qg || true'" >> $1/etc/netctl/ethernet
 
 echo "arkos" >> $1/etc/hostname
 
 # Enable important system services on startup
 echo -e "\033[1mFinal setup and cleaning:\033[0m"
 chroot $1/ ln -s '/usr/lib/systemd/system/sshd.service' '$1/etc/systemd/system/multi-user.target.wants/sshd.service'
-chroot $1/ ln -s '/usr/lib/systemd/system/ntpd.service' '$1/etc/systemd/system/multi-user.target.wants/ntpd.service'
+chroot $1/ ln -s '/usr/lib/systemd/system/logrunner.service' '$1/etc/systemd/system/multi-user.target.wants/logrunner.service'
+chroot $1/ ln -s '/usr/lib/systemd/system/beacon.service' '$1/etc/systemd/system/multi-user.target.wants/beacon.service'
+chroot $1/ ln -s '/usr/lib/systemd/system/iptables.service' '$1/etc/systemd/system/multi-user.target.wants/iptables.service'
 chroot $1/ netctl enable ethernet
 
 # Clear pacman cache files

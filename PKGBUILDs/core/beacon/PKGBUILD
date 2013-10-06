@@ -1,25 +1,23 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot is>
 
-pkgname=logrunner
+pkgname=beacon
 pkgver=0.1
 pkgrel=1
-pkgdesc="Captures logs in memory and intelligently saves them to disk"
+pkgdesc="Gives arkOS presence and lowlevel data"
 
 arch=('any')
 url="http://jcook.cc/logrunner"
 license=('GPLv3')
-groups=('base')
-depends=('python2')
+depends=('python2' 'python2-pam')
 makedepends=('python2' 'python2-distribute')
-provides=('logrunner')
-conflicts=('logrotate')
-source=("$pkgname-$pkgver.tar.gz"::"http://pkg.arkos.io/$pkgname-$pkgver.tar.gz")
-md5sums=('ff69c6f258bfa46e0ac884f63d177466')
-backup=('etc/logrunner.conf')
+groups=('base')
+provides=('beacon')
+source=("arkos-$pkgname-$pkgver.tar.gz"::"http://pkg.arkos.io/resources/arkos-$pkgname-$pkgver.tar.gz")
+md5sums=('36cfb9d45d8471ef36183db9c9f5e54a')
 
 build() {
   cd "$srcdir"
-  tar xvzf "$pkgname-$pkgver.tar.gz"
+  tar xvzf "arkos-$pkgname-$pkgver.tar.gz"
 
   msg2 'Replacing python shebang by python2 shebang...'
   find . -type f -exec sed -i \
@@ -29,9 +27,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/arkos-$pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 
   mkdir -p $pkgdir/etc/systemd/system/multi-user.target.wants
-  ln -s /usr/lib/systemd/system/logrunner.service $pkgdir/etc/systemd/system/multi-user.target.wants/logrunner.service
+  ln -s /usr/lib/systemd/system/beacon.service $pkgdir/etc/systemd/system/multi-user.target.wants/beacon.service
 }
