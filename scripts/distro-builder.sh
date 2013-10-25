@@ -48,10 +48,11 @@ echo "arkos" >> $1/etc/hostname
 
 # Enable important system services on startup
 echo -e "\033[1mFinal setup and cleaning:\033[0m"
-chroot $1/ ln -s '/usr/lib/systemd/system/sshd.service' '$1/etc/systemd/system/multi-user.target.wants/sshd.service'
-chroot $1/ ln -s '/usr/lib/systemd/system/logrunner.service' '$1/etc/systemd/system/multi-user.target.wants/logrunner.service'
-chroot $1/ ln -s '/usr/lib/systemd/system/beacon.service' '$1/etc/systemd/system/multi-user.target.wants/beacon.service'
-chroot $1/ ln -s '/usr/lib/systemd/system/iptables.service' '$1/etc/systemd/system/multi-user.target.wants/iptables.service'
+chroot $1/ ln -s '/usr/lib/systemd/system/sshd.service' 'etc/systemd/system/multi-user.target.wants/sshd.service'
+chroot $1/ ln -s '/usr/lib/systemd/system/logrunner.service' 'etc/systemd/system/multi-user.target.wants/logrunner.service'
+chroot $1/ ln -s '/usr/lib/systemd/system/beacon.service' 'etc/systemd/system/multi-user.target.wants/beacon.service'
+chroot $1/ ln -s '/usr/lib/systemd/system/iptables.service' 'etc/systemd/system/multi-user.target.wants/iptables.service'
+chroot $1/ ln -s '/usr/lib/systemd/system/cronie.service' 'etc/systemd/system/multi-user.target.wants/cronie.service'
 chroot $1/ netctl enable ethernet
 
 # Clear pacman cache files
