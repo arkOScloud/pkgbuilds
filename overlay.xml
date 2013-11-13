@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>rogento</name>
+    <description>arkOS ebuild oveerlay</description>
+    <homepage>https://arkos.io/</homepage>
+    <owner type="project">
+      <email>jacob at jcook.cc</email>
+      <name>jacob</name>
+    </owner>
+    <source type="git">git://github.com/cznweb/arkos.git</source>
+    <feed>https://github.com/cznweb/arkos.git/commits/portage.atom</feed>
+  </repo>
+</repositories>
+

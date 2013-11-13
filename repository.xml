@@ -1,0 +1,14 @@
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>arkos</name>
+    <description>arkOS ebuilds overlay</description>
+    <homepage> https://arkos.io/ </homepage>
+    <owner type="project">
+      <email>jacob at jcook.cc</email>
+      <name>jacob</name>
+    </owner>
+    <source type="git">git://github.com/cznweb/arkos.git</source>
+    <source type="git">https://github.com/cznweb/arkos.git</source>
+    <feed> </feed>
+  </repo>
+</repositories>
