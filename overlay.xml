@@ -2,7 +2,7 @@
 <!DOCTYPE repositories SYSTEM "repositories.dtd">
 <repositories xmlns="" version="1.0">
   <repo quality="experimental" status="unofficial">
-    <name>rogento</name>
+    <name>arkos</name>
     <description>arkOS ebuild oveerlay</description>
     <homepage>https://arkos.io/</homepage>
     <owner type="project">
