@@ -1,8 +1,12 @@
 # $Id$
 # Maintainer: Tom Gundersen <teg@jklm.no>
 
+# ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
+#  - modifed os-release
+
+# Maintenance contact:
 # arkOS: Jacob Cook <jacob@citizenweb.is>
-#  - modifed os-release and added manpage for arkOS
+#  - added manpage for arkOS
 
 noautobuild=1
 

@@ -1,10 +1,14 @@
 # Maintainer: Dan McGee <dan@archlinux.org>
 # Maintainer: Dave Reisner <dreisner@archlinux.org>
 
-# arkOS: Jacob Cook <jacob@ark-os.org>
+# ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 # - arch/host/flags for arm and armv7h
 # - pacman.conf: architecture=arm/armv7h
 # - makepkg.conf: change C/CXX/LDFLAGS
+
+# Maintenance contact:
+# arkOS: Jacob Cook <jacob@citizenweb.is>
+# - change default repos in genesis.conf
 
 pkgname=pacman
 pkgver=4.1.1
