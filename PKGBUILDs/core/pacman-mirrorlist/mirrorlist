@@ -1,24 +1,26 @@
 #
 # arkOS repository mirrorlist
-# 2013-10-25
+# 2013-12-14
 #
 
 # Official Mirrors (maintained by arkOS team)
 # -------------------------------------------
 
 # New York (United States)
-Server = http://nyus.arkos.io/$repo
+Server = http://nyus.arkos.io/$arch/$repo
 
 # Amsterdam (The Netherlands)
-#Server = http://amnl.arkos.io/$repo
-
+#Server = http://amnl.arkos.io/$arch/$repo
 
 
 # Community Mirrors (maintained by arkOS contributors)
 # ----------------------------------------------------
 
 # Frankfurt (Germany)
-#Server = http://frde.arkos.io/$repo
+#Server = http://frde.arkos.io/$arch/$repo
+
+# Vienna (Austria)
+#Server = http://wien.wohlmuther-it.com/arkosmirror/pkg/$arch/$repo
 
 # Orlando (United States)
-#Server = http://orfl.arkos.io/$repo
+#Server = http://orfl.arkos.io/$arch/$repo
