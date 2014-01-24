@@ -1,0 +1,37 @@
+# Maintainer: Jacob Cook <jacob at citizenweb dot is>
+
+pkgname=logrunner
+pkgver=0.1
+pkgrel=1
+pkgdesc="Captures logs in memory and intelligently saves them to disk"
+
+arch=('any')
+url="https://github.com/peakwinter/logrunner"
+license=('GPLv3')
+groups=('base')
+depends=('python2')
+makedepends=('python2' 'python2-distribute')
+provides=('logrunner')
+conflicts=('logrotate')
+source=("$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
+md5sums=('ff69c6f258bfa46e0ac884f63d177466')
+backup=('etc/logrunner.conf')
+
+build() {
+  cd "$srcdir"
+  tar xvzf "$pkgname-$pkgver.tar.gz"
+
+  msg2 'Replacing python shebang by python2 shebang...'
+  find . -type f -exec sed -i \
+    -e'1s|^#!/usr/bin/env python$|#!/usr/bin/env python2|' \
+    -e '1s|^#!/usr/bin/python$|#!/usr/bin/env python2|' \
+    "{}" \;
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+
+  mkdir -p $pkgdir/etc/systemd/system/multi-user.target.wants
+  ln -s /usr/lib/systemd/system/logrunner.service $pkgdir/etc/systemd/system/multi-user.target.wants/logrunner.service
+}

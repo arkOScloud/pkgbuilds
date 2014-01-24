@@ -1,6 +1,6 @@
 #
 # arkOS repository mirrorlist
-# 2013-12-18
+# 2014-01-24
 #
 
 # Official Mirrors (maintained by arkOS team)
@@ -27,14 +27,11 @@ Server = http://nyus.mirror.arkos.io/$arch/$repo
 # Frankfurt (Germany)
 #Server = http://frde.mirror.arkos.io/$arch/$repo
 
+# Reykjavik (Iceland)
+#Server = http://reis.mirror.arkos.io/$arch/$repo
+
 
 # ASIA ==========
 
 # Taipei (Taiwan)
 #Server = http://tatw.mirror.arkos.io/$arch/$repo
-
-
-# NORTH AMERICA ==========
-
-# Orlando (United States)
-#Server = http://orfl.mirror.arkos.io/$arch/$repo

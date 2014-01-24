@@ -11,10 +11,10 @@
 # - change default repos in genesis.conf
 
 pkgname=pacman
-pkgver=4.1.1
-pkgrel=1
+pkgver=4.1.2
+pkgrel=5.2
 pkgdesc="A library-based package manager with dependency support"
-arch=('armv6h')
+arch=('i686' 'x86_64')
 url="http://www.archlinux.org/pacman/"
 license=('GPL')
 groups=('base' 'base-devel')
@@ -24,20 +24,16 @@ checkdepends=('python2' 'fakechroot')
 optdepends=('fakeroot: for makepkg usage as normal user')
 provides=('pacman-contrib')
 conflicts=('pacman-contrib')
-replaces=('pacman-contrib') 
+replaces=('pacman-contrib')
 backup=(etc/pacman.conf etc/makepkg.conf)
-install=pacman.install
-options=(!libtool)
+options=('strip' 'debug')
 source=(ftp://ftp.archlinux.org/other/pacman/$pkgname-$pkgver.tar.gz{,.sig}
         pacman.conf
         makepkg.conf)
-md5sums=('72a1688ff73c1c0b79d8f87b3793d446'
+md5sums=('063c8b0ff6bdf903dc235445525627cd'
          'SKIP'
-         '1102d7fc0ac08c75609e2b57467eeea9'
-         'dbc2599202608802e4d5515f8b4241c6')
-
-# keep an upgrade path for older installations
-PKGEXT='.pkg.tar.gz'
+         '82714f05709654cc1a105bd27101bfa9'
+         'e76e2b0c42b7820331abe524ac706653')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -57,6 +53,7 @@ check() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
+  make DESTDIR=$pkgdir -C contrib install
 
   # install Arch specific stuff
   install -dm755 $pkgdir/etc
@@ -78,7 +75,7 @@ package() {
       myflags="-march=armv7-a -mfloat-abi=hard -mfpu=vfpv3-d16 "
       ;;
   esac
-install -m644 $srcdir/makepkg.conf $pkgdir/etc/
+  install -m644 $srcdir/makepkg.conf $pkgdir/etc/
   # set things correctly in the default conf file
   sed -i $pkgdir/etc/makepkg.conf \
     -e "s|@CARCH[@]|$mycarch|g" \
@@ -90,9 +87,11 @@ install -m644 $srcdir/makepkg.conf $pkgdir/etc/
   install -dm755 ${pkgdir}/usr/share/bash-completion/completions
   mv ${pkgdir}/etc/bash_completion.d/pacman \
     ${pkgdir}/usr/share/bash-completion/completions
-  rmdir ${pkgdir}/etc/bash_completion.d 
-  
+  rmdir ${pkgdir}/etc/bash_completion.d
+
   for f in makepkg pacman-key; do
-ln -s pacman "$pkgdir/usr/share/bash-completion/completions/$f"
+    ln -s pacman "$pkgdir/usr/share/bash-completion/completions/$f"
   done
+
+  install -Dm644 contrib/PKGBUILD.vim "$pkgdir/usr/share/vim/vimfiles/syntax/PKGBUILD.vim"
 }
