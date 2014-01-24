@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/peakwinter/python-nginx"
 license=('GPLv3')
 depends=('python2')
-makedepends=('python2' 'python2-setuptools')
+makedepends=('python2' 'python2-distribute')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/peakwinter/python-nginx/archive/$pkgver.tar.gz")
 md5sums=('d865515aaecb7fbe3e506472d17ddbff')
 
