@@ -2,7 +2,7 @@
 mkdir -p $1
 echo -e "\033[1mInstalling packages...\033[0m"
 mkdir -p $1/var/lib/pacman
-pacman -Syy --force --noconfirm --noprogressbar -r $1/ base base-devel binutils dosfstools dialog e2fsprogs genesis ifplugd iptables linux linux-headers localepurge mkinitcpio mkinitcpio-busybox netctl nginx ntp openssh raspberrypi-firmware syslog-ng systemd wpa_supplicant wpa_actiond wget python2-imaging python2-psutil logrunner beacon
+pacman -Syy --force --noconfirm --noprogressbar -r $1/ base base-devel binutils dosfstools dialog e2fsprogs genesis ifplugd iptables linux linux-headers localepurge mkinitcpio mkinitcpio-busybox netctl nginx ntp openssh raspberrypi-firmware syslog-ng systemd wpa_supplicant wpa_actiond wget python2-pillow python2-psutil logrunner beacon fail2ban
 
 # Add root password and set up special files
 echo -e "\033[1mSetting the password to 'root' and making special files:\033[0m"
@@ -62,10 +62,6 @@ chroot $1/ yes | /usr/bin/pacman -Scc
 mkdir $1/etc/nginx/sites-available
 mkdir $1/etc/nginx/sites-enabled
 mkdir -p $1/srv/http/webapps
-echo "upstream php {
-	server unix:/tmp/php-cgi.socket;
-	server 127.0.0.1:9000;
-	}" > $1/etc/nginx/php.conf
 
 # Final cleanup
 rm $1/root/.bash_history
