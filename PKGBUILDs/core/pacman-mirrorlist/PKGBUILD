@@ -1,7 +1,7 @@
 # Maintainer: Jacob Cook <jacob@citizenweb.is>
 
 pkgname=pacman-mirrorlist
-pkgver=20140124
+pkgver=20140502
 pkgrel=1
 pkgdesc="arkOS mirror list for use by pacman"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('base')
 backup=(etc/pacman.d/mirrorlist)
 source=(mirrorlist)
-md5sums=('8e1a1f91e198c02be613ff1d77c1ad81')
+md5sums=('2aedd57ba7843d123a0fea110e3959b4')
 
 build() {
   mkdir -p $pkgdir/etc/pacman.d
