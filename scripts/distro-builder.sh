@@ -2,7 +2,15 @@
 mkdir -p $1
 echo -e "\033[1mInstalling packages...\033[0m"
 mkdir -p $1/var/lib/pacman
-pacman -Syy --force --noconfirm --noprogressbar -r $1/ base base-devel binutils dosfstools dialog e2fsprogs genesis ifplugd iptables linux linux-headers localepurge mkinitcpio mkinitcpio-busybox netctl nginx ntp openssh raspberrypi-firmware syslog-ng systemd wpa_supplicant wpa_actiond wget python2-pillow python2-psutil logrunner beacon fail2ban
+
+# Raspberry Pi
+pacman -Syy --force --noconfirm --noprogressbar -r $1/ base base-devel binutils dosfstools dialog e2fsprogs genesis ifplugd iptables linux linux-headers localepurge mkinitcpio mkinitcpio-busybox netctl nginx ntp openssh raspberrypi-firmware syslog-ng systemd wpa_supplicant wpa_actiond wget python2-pillow python2-psutil logrunner beacon fail2ban python2-pip unzip
+
+# Cubieboard2
+#pacman -Syy --force --noconfirm --noprogressbar -r $1/ base base-devel binutils dosfstools dialog e2fsprogs genesis ifplugd iptables linux-sun7i linux-sun7i-headers localepurge mkinitcpio mkinitcpio-busybox netctl nginx ntp openssh uboot-cubieboard2 syslog-ng systemd wpa_supplicant wpa_actiond wget python2-pillow python2-psutil logrunner beacon fail2ban python2-pip unzip
+
+# Cubietruck
+#pacman -Syy --force --noconfirm --noprogressbar -r $1/ base base-devel binutils dosfstools dialog e2fsprogs genesis ifplugd iptables linux-sun7i linux-sun7i-headers localepurge mkinitcpio mkinitcpio-busybox netctl nginx ntp openssh uboot-cubietruck syslog-ng systemd wpa_supplicant wpa_actiond wget python2-pillow python2-psutil logrunner beacon fail2ban python2-pip unzip
 
 # Add root password and set up special files
 echo -e "\033[1mSetting the password to 'root' and making special files:\033[0m"
@@ -16,7 +24,7 @@ chroot $1/ mknod -m 0644 /dev/urandom c 1 9
 
 # Create manpages DB (this can take awhile)
 echo -e "\033[1mGenerating manpages:\033[0m"
-chroot $1/ /usr/bin/mandb --quiet
+chroot $1/ /usr/bin/mandb
 
 # Generate locale
 echo -e "\033[1mGenerating locale:\033[0m"
@@ -42,7 +50,6 @@ echo "Connection='ethernet'" >> $1/etc/netctl/ethernet
 echo "Description='A basic dhcp ethernet connection using iproute'" >> $1/etc/network.d/ethernet-eth0
 echo "Interface='eth0'" >> $1/etc/netctl/ethernet
 echo "IP='dhcp'" >> $1/etc/netctl/ethernet
-echo "ExecUpPost='/usr/bin/ntpd -qg || true'" >> $1/etc/netctl/ethernet
 
 echo "arkos" >> $1/etc/hostname
 
@@ -53,6 +60,7 @@ chroot $1/ ln -s '/usr/lib/systemd/system/logrunner.service' 'etc/systemd/system
 chroot $1/ ln -s '/usr/lib/systemd/system/beacon.service' 'etc/systemd/system/multi-user.target.wants/beacon.service'
 chroot $1/ ln -s '/usr/lib/systemd/system/iptables.service' 'etc/systemd/system/multi-user.target.wants/iptables.service'
 chroot $1/ ln -s '/usr/lib/systemd/system/cronie.service' 'etc/systemd/system/multi-user.target.wants/cronie.service'
+chroot $1/ ln -s '/usr/lib/systemd/system/ntpd.service' 'etc/systemd/system/multi-user.target.wants/ntpd.service'
 chroot $1/ netctl enable ethernet
 
 # Clear pacman cache files
@@ -62,6 +70,12 @@ chroot $1/ yes | /usr/bin/pacman -Scc
 mkdir $1/etc/nginx/sites-available
 mkdir $1/etc/nginx/sites-enabled
 mkdir -p $1/srv/http/webapps
+
+# Set python2 as default
+chroot $1/ ln -s '/usr/bin/python2' 'usr/bin/python'
+
+# Add boot partition to fstab
+echo "/dev/mmcblk0p1  /boot vfat   defaults  0     0" >> $1/etc/fstab
 
 # Final cleanup
 rm $1/root/.bash_history
