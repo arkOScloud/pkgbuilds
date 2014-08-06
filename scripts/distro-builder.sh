@@ -1,3 +1,6 @@
+# Abort running this script if we were not passed an argument
+test -n "$1" || return
+
 # Create initial environment and install base packages
 mkdir -p "$1"
 echo -e "\033[1mInstalling packages...\033[0m"
