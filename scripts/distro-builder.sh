@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Abort running this script if we were not passed an argument
 test -n "$1" || return
 
