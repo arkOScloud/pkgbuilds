@@ -1,18 +1,18 @@
 # Maintainer: Jacob Cook <jacob@citizenweb.is>
 
-pkgname=pacman-mirrorlist
-pkgver=20140502
+pkgname=arkos-mirrorlist
+pkgver=20141016
 pkgrel=1
 pkgdesc="arkOS mirror list for use by pacman"
 arch=('any')
 url="http://pkg.arkos.io/"
 license=('GPL')
 groups=('base')
-backup=(etc/pacman.d/mirrorlist)
-source=(mirrorlist)
+backup=(etc/pacman.d/arkos-mirrorlist)
+source=(arkos-mirrorlist)
 md5sums=('2aedd57ba7843d123a0fea110e3959b4')
 
 build() {
   mkdir -p $pkgdir/etc/pacman.d
-  install -m644 $srcdir/mirrorlist $pkgdir/etc/pacman.d/
+  install -m644 $srcdir/arkos-mirrorlist $pkgdir/etc/pacman.d/
 }

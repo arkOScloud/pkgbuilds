@@ -1,0 +1,19 @@
+#
+# arkOS repository mirrorlist
+# 2014-10-16
+#
+
+# New York (United States)
+Server = http://nyus.mirror.arkos.io/$arch/$repo
+
+# San Francisco (United States)
+#Server = http://sfus.mirror.arkos.io/$arch/$repo
+
+# Amsterdam (The Netherlands)
+#Server = http://amnl.mirror.arkos.io/$arch/$repo
+
+# Strasbourg (France)
+#Server = http://sbfr.mirror.arkos.io/$arch/$repo
+
+# Singapore (Singapore)
+#Server = http://sgsg.mirror.arkos.io/$arch/$repo
