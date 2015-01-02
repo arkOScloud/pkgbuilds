@@ -1,0 +1,3 @@
+post_install(){
+    grep -q "\[arkos\]" /etc/pacman.conf || printf "%s\n[arkos]%s\nInclude = /etc/pacman.d/arkos-mirrorlist%s\n" >> /etc/pacman.conf
+}

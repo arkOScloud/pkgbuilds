@@ -1,0 +1,18 @@
+post_install(){
+	echo "Setting up new configuration..."
+	rm -f /etc/openldap/slapd.ldif
+	rm -rf /etc/openldap/slapd.d/*
+	cp /usr/share/doc/sudo/schema.OpenLDAP /etc/openldap/schema/sudo.schema
+	sed -i "s|%ROOTPW%|$(slappasswd -h '{CRYPT}' -c '$1$%.8s' -s 'admin')|" /etc/arkos/arkos-slapd.conf
+	cp /etc/arkos/arkos-slapd.conf /etc/openldap/slapd.conf
+	echo "" | slapadd -f /etc/openldap/slapd.conf
+	slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d/
+	chown -R ldap:ldap /var/lib/openldap/openldap-data/*
+	chown -R ldap:ldap /etc/openldap/slapd.d/
+	systemctl stop slapd
+	slapindex
+	echo "Restarting slapd..."
+	systemctl start slapd
+	echo "Creating LDAP directory..."
+	ldapadd -D "cn=admin,dc=arkos-servers,dc=org" -w "admin" -f base.ldif
+}

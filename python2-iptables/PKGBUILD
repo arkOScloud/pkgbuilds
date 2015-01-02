@@ -1,0 +1,30 @@
+# Maintainer: Jacob Cook <jacob at citizenweb dot io>
+
+pkgname=python2-iptables
+pkgver=0.6.0
+pkgrel=1
+pkgdesc="Python bindings for iptables"
+
+arch=('x86_64 armv6h armv7h')
+url="http://ldx.github.com/python-iptables/"
+license=('Apache')
+depends=('python2')
+makedepends=('python2' 'python2-distribute')
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/ldx/python-iptables/archive/v$pkgver.tar.gz")
+md5sums=('65d428b593652434a30b0bf5df1bd485')
+
+build() {
+  cd "$srcdir"
+  tar xvzf "$pkgname-$pkgver.tar.gz"
+
+  msg2 'Replacing python shebang by python2 shebang...'
+  find . -type f -exec sed -i \
+    -e'1s|^#!/usr/bin/env python$|#!/usr/bin/env python2|' \
+    -e '1s|^#!/usr/bin/python$|#!/usr/bin/env python2|' \
+    "{}" \;
+}
+
+package() {
+  cd "$srcdir/python-iptables-$pkgver"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+}
