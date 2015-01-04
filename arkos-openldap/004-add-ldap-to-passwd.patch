@@ -1,0 +1,8 @@
+--- /etc/pam.d/passwd	2015-01-03 21:58:59.272076672 -0500
++++ passwd	2015-01-03 21:58:51.325409700 -0500
+@@ -1,4 +1,5 @@
+ #%PAM-1.0
++password        sufficient      pam_ldap.so
+ #password	required	pam_cracklib.so difok=2 minlen=8 dcredit=2 ocredit=2 retry=3
+ #password	required	pam_unix.so sha512 shadow use_authtok
+ password	required	pam_unix.so sha512 shadow nullok

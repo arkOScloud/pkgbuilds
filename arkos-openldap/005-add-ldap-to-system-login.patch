@@ -1,0 +1,8 @@
+--- /etc/pam.d/system-login	2015-01-03 22:01:29.368749075 -0500
++++ system-login	2015-01-03 22:01:06.408748199 -0500
+@@ -17,3 +17,5 @@
+ session    optional   pam_mail.so          dir=/var/spool/mail standard quiet
+ -session   optional   pam_systemd.so
+ session    required   pam_env.so
++session    required   pam_mkhomedir.so skel=/etc/skel umask=0022
++
