@@ -1,0 +1,7 @@
+post_install() {
+  getent group arkos >/dev/null || groupadd --system arkos
+  getent passwd arkos >/dev/null || useradd --system -g arkos -s /bin/false arkos
+
+  install -dm700 var/lib/arkos-redis
+  chown arkos:arkos var/lib/arkos-redis
+}

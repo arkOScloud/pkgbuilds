@@ -12,15 +12,15 @@ url='http://redis.io/'
 license=('BSD')
 depends=('redis')
 backup=('etc/arkos/arkos-redis.conf')
+install=(arkos-redis.install)
 source=(arkos-redis.service
         arkos-redis.conf)
 md5sums=('27ab966309d16a0d37e6b31a9d7cd73b'
          '3dab86618b3eefa878b4b1c62a8d0a08')
 
 package() {
-  cd $pkgname-$pkgver
-  mkdir -p "$pkgdir"/var/lib/arkos-redis
   install -Dm644 arkos-redis.conf "$pkgdir"/etc/arkos/arkos-redis.conf
   install -Dm644 arkos-redis.service "$pkgdir"/usr/lib/systemd/system/arkos-redis.service
+  mkdir -p "$pkgdir"/etc/systemd/system/multi-user.target.wants
   ln -s /usr/lib/systemd/system/arkos-redis.service "$pkgdir"/etc/systemd/system/multi-user.target.wants/arkos-redis.service
 }

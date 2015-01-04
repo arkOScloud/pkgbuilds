@@ -12,11 +12,11 @@ source=(https://git.coderouge.co/arkOS/python-cryptsetup/repository/archive.tar.
 sha1sums=('0cd83026a8e1e6e834caf5dd29d839490b4c67de')
 
 check() {
-  cd python-cryptsetup
+  cd python-cryptsetup.git
   python2 setup.py check
 }
 
 package() {
-  cd python-cryptsetup
+  cd python-cryptsetup.git
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
