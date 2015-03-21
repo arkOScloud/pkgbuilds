@@ -1,0 +1,27 @@
+# Based on the file created for Arch Linux by:
+# Pierre Schmitz <pierre@archlinux.de>
+
+# Maintainer: Jacob Cook <jacob@citizenweb.io>
+
+pkgname=arkos-keyring
+pkgver=20150321
+pkgrel=1
+pkgdesc='arkOS PGP keyring'
+arch=('any')
+url='https://arkos.io'
+license=('GPL')
+install="${pkgname}.install"
+source=('Makefile'
+        'arkos.gpg'
+        'arkos-revoked'
+        'arkos-trusted')
+md5sums=('3e1e09458f818cbc30d35bb83067c5c9'
+         '2dcaf8653c601122ff5e2f5e7d762e73'
+         'd41d8cd98f00b204e9800998ecf8427e'
+         '6d4a9b5f01879404ded56420580c7530')
+validpgpkeys=('90A562FC56CC8CA1BA54F1360155ED1E0585F850')
+
+package() {
+	cd "${srcdir}"
+	make PREFIX=/usr DESTDIR=${pkgdir} install
+}
