@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/python-nginx-$pkgver"
+  cd "$srcdir/python-nginx.git"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }

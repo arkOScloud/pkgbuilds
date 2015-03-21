@@ -15,8 +15,8 @@ backup=('etc/arkos/arkos-redis.conf')
 install=(arkos-redis.install)
 source=(arkos-redis.service
         arkos-redis.conf)
-md5sums=('27ab966309d16a0d37e6b31a9d7cd73b'
-         '3dab86618b3eefa878b4b1c62a8d0a08')
+md5sums=('966fddd9d6a9ccafe2da84406932891d'
+         '2312ff4b7b2a4b72b6c3e1cf90176d8e')
 
 package() {
   install -Dm644 arkos-redis.conf "$pkgdir"/etc/arkos/arkos-redis.conf

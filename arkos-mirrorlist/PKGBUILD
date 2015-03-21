@@ -9,10 +9,10 @@ url="http://pkg.arkos.io/"
 license=('GPL')
 groups=('base')
 backup=(etc/pacman.d/arkos-mirrorlist)
-install=(arkos-openldap.install)
+install=(arkos-mirrorlist.install)
 source=(arkos-mirrorlist)
 md5sums=('7acbe27987f516c32f103166c814ed6f')
 
-build() {
-  install -m644 $srcdir/arkos-mirrorlist $pkgdir/etc/pacman.d/
+package() {
+  install -Dm644 $srcdir/arkos-mirrorlist $pkgdir/etc/pacman.d/arkos-mirrorlist
 }
