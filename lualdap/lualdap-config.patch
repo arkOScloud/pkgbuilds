@@ -1,0 +1,25 @@
+--- config.orig	2008-06-10 22:59:38.086160524 +0200
++++ config	2008-06-10 22:59:21.626384059 +0200
+@@ -1,10 +1,10 @@
+ # Installation directories
+ # System's libraries directory (where binary libraries are installed)
+-LUA_LIBDIR= /usr/local/lib/lua/5.0
++LUA_LIBDIR= /usr/lib/lua/5.1
+ # Lua includes directory
+-LUA_INC= /usr/local/include
++LUA_INC= /usr/include/lua5.1
+ # OpenLDAP includes directory
+-OPENLDAP_INC= /usr/local/include
++OPENLDAP_INC= /usr/include
+ # OpenLDAP library (an optional directory can be specified with -L<dir>)
+ OPENLDAP_LIB= -lldap
+ 
+@@ -13,7 +13,7 @@
+ #LIB_OPTION= -bundle -undefined dynamic_lookup #for MacOS X
+ 
+ # Lua version number (first and second digits of target version)
+-LUA_VERSION_NUM= 500
++LUA_VERSION_NUM= 510
+ LIBNAME= $T.so.$V
+ COMPAT_DIR= ../compat/src
+ 

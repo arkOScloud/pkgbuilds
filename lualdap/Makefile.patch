@@ -1,0 +1,14 @@
+--- Makefile.orig	2013-04-17 03:40:01.665126872 +0100
++++ Makefile	2013-04-17 03:45:34.682696369 +0100
+@@ -21,8 +43,8 @@
+ 
+ install: src/$(LIBNAME)
+-	mkdir -p $(LUA_LIBDIR)
+-	cp src/$(LIBNAME) $(LUA_LIBDIR)
+-	cd $(LUA_LIBDIR); ln -f -s $(LIBNAME) $T.so
++	mkdir -p $(DESTDIR)/$(LUA_LIBDIR)
++	cp src/$(LIBNAME) $(DESTDIR)$(LUA_LIBDIR)
++	cd $(DESTDIR)$(LUA_LIBDIR); ln -f -s $(LIBNAME) $T.so
+ 
+ clean:
+ 	rm -f $(OBJS) src/$(LIBNAME)
