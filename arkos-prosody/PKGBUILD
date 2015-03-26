@@ -1,0 +1,25 @@
+# $Id$
+# Maintainer: Jacob Cook <jacob@citizenweb.io>
+
+# NOTE: This only installs configurations needed for Prosody to run successfully on arkOS. See the main prosody package for code.
+
+pkgname=arkos-prosody
+pkgver=0.1
+pkgrel=1
+pkgdesc='Configurations for arkOS Prosody XMPP server'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://prosody.im/'
+license=('MIT')
+depends=('prosody' 'lualdap')
+source=(arkos-prosody.install
+        prosody.cfg.lua
+        mod_auth_ldap.lua)
+install=arkos-prosody.install
+
+package() {
+  install -Dm644 prosody.cfg.lua "$pkgdir"/etc/arkos/arkos-prosody.cfg.lua
+  install -Dm644 mod_auth_ldap.lua "$pkgdir"/usr/lib/prosody/modules/plugins/mod_auth_ldap.lua
+}
+md5sums=('ff472011199809a3c14b68441f838835'
+         '87b4d86ece1a2c0dbe669bb58b081157'
+         '363239bc6344db0b85b921e3489e786c')

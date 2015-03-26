@@ -1,0 +1,7 @@
+post_install(){
+    echo "Configuring Prosody..."
+    mkdir -p /etc/prosody/conf.d
+    mkdir -p /etc/systemd/system/multi-user.target.wants
+    cp /etc/arkos/arkos-prosody.cfg.lua /etc/prosody/prosody.cfg.lua
+    ln -s /usr/lib/systemd/system/prosody.service /etc/systemd/system/multi-user.target.wants/prosody.service
+}
