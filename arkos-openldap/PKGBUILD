@@ -4,13 +4,13 @@
 # NOTE: This only installs configurations needed to run a compatible instance of OpenLDAP for arkOS. See the main openldap package for code.
 
 pkgname=arkos-openldap
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='Configurations for arkOS OpenLDAP server'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.openldap.org/'
 license=('custom')
-depends=('openldap' 'nss-pam-ldapd')
+depends=('openldap' 'nss-pam-ldapd' 'libldap')
 backup=('etc/arkos/arkos-slapd.conf')
 source=('001-add-ldap-to-system-auth.patch'
         '002-add-ldap-to-su.patch'
@@ -35,7 +35,7 @@ package() {
   cp *.patch "$pkgdir"/tmp/
   install -Dm644 slapd.conf "$pkgdir"/etc/arkos/arkos-slapd.conf
   install -Dm644 base.ldif "$pkgdir"/etc/arkos/base.ldif
-  install -Dm644 ldap.conf "$pkgdir"/etc/openldap/ldap.conf
+  install -Dm644 ldap.conf "$pkgdir"/etc/arkos/arkos-ldap.conf
   install -Dm644 mailserver.schema "$pkgdir"/etc/openldap/schema/mailserver.schema
   install -Dm644 samba.schema "$pkgdir"/etc/openldap/schema/samba.schema
 }

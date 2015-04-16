@@ -1,7 +1,7 @@
 # Maintainer: Jacob Cook <jacob@citizenweb.is>
 
 pkgname=arkos-mirrorlist
-pkgver=20150101
+pkgver=20150413
 pkgrel=1
 pkgdesc="arkOS mirror list for use by pacman"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('base')
 backup=(etc/pacman.d/arkos-mirrorlist)
 install=(arkos-mirrorlist.install)
 source=(arkos-mirrorlist)
-md5sums=('7acbe27987f516c32f103166c814ed6f')
+md5sums=('bd20694ef7632f2c175061585fab2b1e')
 
 package() {
   install -Dm644 $srcdir/arkos-mirrorlist $pkgdir/etc/pacman.d/arkos-mirrorlist
