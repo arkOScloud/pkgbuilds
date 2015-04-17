@@ -1,0 +1,11 @@
+[Unit]
+Description=arkOS Kraken/Genesis
+
+[Service]
+ExecStart=/usr/bin/krakend -d
+ExecStop=/usr/bin/krakend -s
+Type=forking
+PIDFile=/var/run/kraken.pid
+
+[Install]
+WantedBy=multi-user.target

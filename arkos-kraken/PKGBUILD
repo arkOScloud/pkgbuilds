@@ -1,0 +1,30 @@
+# Maintainer: Jacob Cook <jacob at citizenweb dot io>
+
+pkgname=arkos-kraken
+pkgver=0.7.0beta1
+pkgrel=1
+pkgdesc="REST API server for arkOS"
+
+arch=('any')
+url="https://arkos.io/"
+license=('GPLv3')
+depends=('python2' 'arkos-core' 'redis' 'python2-redis' 'python2-itsdangerous')
+makedepends=('python2')
+provides=('arkos-kraken')
+source=("krakend.service" 
+    "$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
+md5sums=('bf713c0c4f3fd28908b325a253a0619a'
+         '7bd7f3eb624818f89f05c06459be22a7')
+
+build() {
+  cd "$srcdir"
+  tar xvzf "$pkgname-$pkgver.tar.gz"
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+  mkdir -p $pkgdir/etc/systemd/system/multi-user.target.wants
+  install -Dm644 "$srcdir"/krakend.service "$pkgdir"/usr/lib/systemd/system/krakend.service
+  ln -s /usr/lib/systemd/system/krakend.service $pkgdir/etc/systemd/system/multi-user.target.wants/krakend.service
+}
