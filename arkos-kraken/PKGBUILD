@@ -15,7 +15,7 @@ provides=('arkos-kraken')
 source=("krakend.service" 
     "$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
 md5sums=('bf713c0c4f3fd28908b325a253a0619a'
-         '7bd7f3eb624818f89f05c06459be22a7')
+         '7b5feffe678bff6d13e8d929d2f7e297')
 
 build() {
   cd "$srcdir"

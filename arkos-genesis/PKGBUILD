@@ -13,7 +13,7 @@ makedepends=('nodejs')
 provides=('arkos-core')
 install=('arkos-genesis.install')
 source=("$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
-md5sums=('1523d3815830cc440ec9500389f06998')
+md5sums=('c7535a75026ae93013edd85e8c4697f5')
 
 build() {
   cd "$srcdir"
