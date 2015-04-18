@@ -11,7 +11,8 @@ license=('GPLv3')
 depends=('binutils' 'python2' 'python2-ntplib' 'python2-passlib' 'python2-pyopenssl'
     'python2-iptables' 'python2-nginx' 'python2-dbus' 'python2-cryptsetup' 
     'python2-pyparted' 'python2-ldap' 'python2-psutil' 'python2-netifaces'
-    'python2-gitpython' 'python2-gnupg' 'python2-pacman' 'arkos-openldap' 'supervisor')
+    'python2-gitpython' 'python2-gnupg' 'python2-pacman' 'arkos-openldap' 
+    'nginx' 'git' 'fail2ban' 'supervisor')
 makedepends=('python2')
 provides=('arkos-core')
 source=("$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")

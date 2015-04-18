@@ -8,7 +8,8 @@ pkgdesc="REST API server for arkOS"
 arch=('any')
 url="https://arkos.io/"
 license=('GPLv3')
-depends=('python2' 'arkos-core' 'redis' 'python2-redis' 'python2-itsdangerous')
+depends=('python2' 'arkos-core' 'redis' 'python2-flask' 'python2-redis' 
+    'python2-flask-cors' 'python2-itsdangerous')
 makedepends=('python2')
 provides=('arkos-kraken')
 source=("krakend.service" 
