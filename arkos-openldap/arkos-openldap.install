@@ -11,7 +11,10 @@ post_install(){
 	patch -p1 /etc/pam.d/passwd /tmp/004-add-ldap-to-passwd.patch
 	patch -p1 /etc/pam.d/system-login /tmp/005-add-ldap-to-system-login.patch
 	cp /usr/share/doc/sudo/schema.OpenLDAP /etc/openldap/schema/sudo.schema
-	sed -i "s|%ROOTPW%|$(slappasswd -h '{CRYPT}' -c '$1$%.8s' -s 'admin')|" /etc/arkos/arkos-slapd.conf
+	local LDAP_PWD=$(pwgen 16 1)
+	sed -i "s|%ROOTPW%|$(slappasswd -h '{CRYPT}' -c '$1$%.8s' -s $LDAP_PWD)|" /etc/arkos/arkos-slapd.conf
+	echo '{"ldap": "'$LDAP_PWD'"}' > /etc/arkos/secrets.json
+	chmod 600 /etc/arkos/secrets.json
 	cp /etc/arkos/arkos-slapd.conf /etc/openldap/slapd.conf
 	cp /etc/arkos/arkos-ldap.conf /etc/openldap/ldap.conf
 	echo "" | slapadd -f /etc/openldap/slapd.conf
@@ -22,7 +25,7 @@ post_install(){
 	echo "Restarting slapd..."
 	systemctl start slapd
 	echo "Creating LDAP directory..."
-	ldapadd -D "cn=admin,dc=arkos-servers,dc=org" -w "admin" -f /etc/arkos/base.ldif
+	ldapadd -D "cn=admin,dc=arkos-servers,dc=org" -w $LDAP_PWD -f /etc/arkos/base.ldif
 	systemctl start nslcd
 }
 post_upgrade(){

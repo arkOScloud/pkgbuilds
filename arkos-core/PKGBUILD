@@ -16,8 +16,8 @@ depends=('binutils' 'python2' 'python2-ntplib' 'python2-passlib' 'python2-pyopen
 makedepends=('python2')
 provides=('arkos-core')
 source=("$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
-backup=('etc/arkos/settings.json' 'etc/arkos/secrets.json' 'etc/arkos/policies.json')
-md5sums=('da39d89f832ba08a62be2dee8ecde208')
+backup=('etc/arkos/settings.json' 'etc/arkos/policies.json')
+md5sums=('f58ccaf3e1aa50481c2df1c1ad153441')
 
 build() {
   cd "$srcdir"
