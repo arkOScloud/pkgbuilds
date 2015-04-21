@@ -19,14 +19,11 @@ post_install(){
 	cp /etc/arkos/arkos-ldap.conf /etc/openldap/ldap.conf
 	echo "" | slapadd -f /etc/openldap/slapd.conf
 	slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d/
-	chown -R ldap:ldap /var/lib/openldap/openldap-data/*
 	chown -R ldap:ldap /etc/openldap/slapd.d/
-	slapindex
-	echo "Restarting slapd..."
-	systemctl start slapd
+	slapindex	
+	chown -R ldap:ldap /var/lib/openldap/openldap-data/*
 	echo "Creating LDAP directory..."
-	ldapadd -D "cn=admin,dc=arkos-servers,dc=org" -w $LDAP_PWD -f /etc/arkos/base.ldif
-	systemctl start nslcd
+	slapadd -l /etc/arkos/base.ldif
 }
 post_upgrade(){
     echo "Updating arkOS LDAP configuration..."
@@ -34,7 +31,9 @@ post_upgrade(){
     cp /etc/arkos/arkos-slapd.conf /etc/openldap/slapd.conf
 	cp /etc/arkos/arkos-ldap.conf /etc/openldap/ldap.conf
 	slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d/
+	chown -R ldap:ldap /etc/openldap/slapd.d/
 	slapindex
+	chown -R ldap:ldap /var/lib/openldap/openldap-data/*
 	echo "Restarting slapd..."
 	systemctl start slapd
 }
