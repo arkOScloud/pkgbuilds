@@ -20,10 +20,11 @@ post_install(){
 	echo "" | slapadd -f /etc/openldap/slapd.conf
 	slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d/
 	chown -R ldap:ldap /etc/openldap/slapd.d/
-	slapindex	
-	chown -R ldap:ldap /var/lib/openldap/openldap-data/*
+	slapindex
+	chown -R ldap:ldap /var/lib/openldap/openldap-data
 	echo "Creating LDAP directory..."
 	slapadd -l /etc/arkos/base.ldif
+	chown -R ldap:ldap /var/lib/openldap/openldap-data
 }
 post_upgrade(){
     echo "Updating arkOS LDAP configuration..."
