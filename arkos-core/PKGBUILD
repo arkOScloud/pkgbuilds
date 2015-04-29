@@ -17,7 +17,7 @@ makedepends=('python2')
 provides=('arkos-core')
 source=("$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
 backup=('etc/arkos/settings.json' 'etc/arkos/policies.json')
-md5sums=('dc9d3e2a0d8aace8bb85c09d394d07e2')
+md5sums=('a6b1cd4d7f78984333e0975708f02ab3')
 
 build() {
   cd "$srcdir"
