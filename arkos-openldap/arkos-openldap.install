@@ -1,5 +1,5 @@
 post_install(){
-	echo "Setting up new configuration..."
+	echo " >> Setting up new configuration..."
 	systemctl enable slapd
 	systemctl enable nslcd
 	systemctl stop slapd
@@ -10,6 +10,8 @@ post_install(){
 	patch -p1 /etc/pam.d/su-l /tmp/003-add-ldap-to-su-l.patch
 	patch -p1 /etc/pam.d/passwd /tmp/004-add-ldap-to-passwd.patch
 	patch -p1 /etc/pam.d/system-login /tmp/005-add-ldap-to-system-login.patch
+	patch -p1 /etc/nsswitch.conf /tmp/006-add-ldap-to-nsswitch.patch
+	patch -p1 /etc/nslcd.conf /tmp/007-add-ldap-to-nslcd.patch
 	cp /usr/share/doc/sudo/schema.OpenLDAP /etc/openldap/schema/sudo.schema
 	local LDAP_PWD=$(pwgen 16 1)
 	sed -i "s|%ROOTPW%|$(slappasswd -h '{CRYPT}' -c '$1$%.8s' -s $LDAP_PWD)|" /etc/arkos/arkos-slapd.conf
@@ -22,12 +24,12 @@ post_install(){
 	chown -R ldap:ldap /etc/openldap/slapd.d/
 	slapindex
 	chown -R ldap:ldap /var/lib/openldap/openldap-data
-	echo "Creating LDAP directory..."
+	echo " >> Creating LDAP directory..."
 	slapadd -l /etc/arkos/base.ldif
 	chown -R ldap:ldap /var/lib/openldap/openldap-data
 }
 post_upgrade(){
-    echo "Updating arkOS LDAP configuration..."
+    echo " >> Updating arkOS LDAP configuration..."
     systemctl stop slapd
     cp /etc/arkos/arkos-slapd.conf /etc/openldap/slapd.conf
 	cp /etc/arkos/arkos-ldap.conf /etc/openldap/ldap.conf
@@ -35,6 +37,6 @@ post_upgrade(){
 	chown -R ldap:ldap /etc/openldap/slapd.d/
 	slapindex
 	chown -R ldap:ldap /var/lib/openldap/openldap-data/*
-	echo "Restarting slapd..."
+	echo " >> Restarting slapd..."
 	systemctl start slapd
 }

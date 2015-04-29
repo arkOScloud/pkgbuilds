@@ -1,0 +1,11 @@
+--- /etc/nslcd.conf     2014-10-30 03:47:44.000000000 +0000
++++ nslcd.conf  2015-04-29 15:08:15.699809096 +0000
+@@ -22,7 +22,7 @@
+ #ldap_version 3
+ 
+ # The distinguished name of the search base.
+-base dc=example,dc=com
++base dc=arkos-servers,dc=org
+ 
+ # The distinguished name to bind to the server with.
+ # Optional: default is to bind anonymously.
