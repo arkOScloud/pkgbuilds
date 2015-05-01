@@ -7,19 +7,28 @@ pkgname=arkos-prosody
 pkgver=0.1
 pkgrel=1
 pkgdesc='Configurations for arkOS Prosody XMPP server'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('any')
 url='http://prosody.im/'
 license=('MIT')
 depends=('prosody' 'lualdap')
 source=(arkos-prosody.install
         prosody.cfg.lua
-        mod_auth_ldap.lua)
+        ldap.lib.lua
+        vcard.lib.lua
+        mod_auth_ldap2.lua
+        mod_storage_ldap.lua)
 install=arkos-prosody.install
+md5sums=('ff472011199809a3c14b68441f838835'
+         '83d5aba8c2f4651236d1a1d8c5870470'
+         'f6329cdcdaf35c62be7a157a5a3c2329'
+         '0a7b723fbf8d001a2c00da0228ca4d44'
+         '928e1b96eaa6ab6a0acd70c81d0987a6'
+         '224e77fe2953cac038297bb4534d0bb8')
 
 package() {
   install -Dm644 prosody.cfg.lua "$pkgdir"/etc/arkos/arkos-prosody.cfg.lua
-  install -Dm644 mod_auth_ldap.lua "$pkgdir"/usr/lib/prosody/modules/plugins/mod_auth_ldap.lua
+  install -Dm644 ldap.lib.lua "$pkgdir"/usr/lib/prosody/modules/ldap.lib.lua
+  install -Dm644 vcard.lib.lua "$pkgdir"/usr/lib/prosody/modules/ldap/vcard.lib.lua
+  install -Dm644 mod_auth_ldap2.lua "$pkgdir"/usr/lib/prosody/modules/mod_auth_ldap2.lua
+  install -Dm644 mod_storage_ldap.lua "$pkgdir"/usr/lib/prosody/modules/mod_storage_ldap.lua
 }
-md5sums=('ff472011199809a3c14b68441f838835'
-         '87b4d86ece1a2c0dbe669bb58b081157'
-         '363239bc6344db0b85b921e3489e786c')

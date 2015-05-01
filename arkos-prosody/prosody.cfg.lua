@@ -32,6 +32,11 @@ ssl = {
 	};
 }
 
+allow_registration = false
+c2s_require_encryption = false
+allow_unencrypted_plain_auth = false
+s2s_allow_encryption = true
+s2s_secure_auth = false
 storage = "ldap"
 
 log = {
