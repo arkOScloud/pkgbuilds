@@ -1,5 +1,7 @@
 [Unit]
 Description=arkOS Kraken/Genesis
+Requires=arkos-redis.service
+After=arkos-redis.service
 
 [Service]
 ExecStart=/usr/bin/krakend -d

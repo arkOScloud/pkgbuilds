@@ -1,7 +1,7 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-core
-pkgver=0.7.0beta2
+pkgver=0.7.0beta3
 pkgrel=1
 pkgdesc="Python system management libraries for arkOS"
 
@@ -9,15 +9,15 @@ arch=('any')
 url="https://arkos.io/"
 license=('GPLv3')
 depends=('binutils' 'python2' 'python2-ntplib' 'python2-passlib' 'python2-pyopenssl'
-    'python2-iptables' 'python2-nginx' 'python2-dbus' 'python2-cryptsetup' 
+    'python2-iptables' 'python2-nginx' 'python2-dbus' 'python2-cryptsetup'
     'python2-pyparted' 'python2-ldap' 'python2-psutil' 'python2-netifaces'
-    'python2-gitpython' 'python2-gnupg' 'python2-pacman' 'arkos-openldap' 
+    'python2-gitpython' 'python2-gnupg' 'python2-pacman' 'arkos-openldap'
     'nginx' 'git' 'fail2ban' 'supervisor')
 makedepends=('python2')
 provides=('arkos-core')
 source=("$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
 backup=('etc/arkos/settings.json' 'etc/arkos/policies.json')
-md5sums=('a6b1cd4d7f78984333e0975708f02ab3')
+md5sums=('a7ece17d0f604cdf310b7669539e49b0')
 
 build() {
   cd "$srcdir"

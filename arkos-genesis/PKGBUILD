@@ -1,19 +1,19 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-genesis
-pkgver=0.7.0beta2
+pkgver=0.7.0beta3
 pkgrel=1
 pkgdesc="Web interface for managing arkOS"
 
 arch=('any')
 url="https://arkos.io/"
 license=('GPLv3')
-depends=('arkos-core' 'arkos-kraken' 'git' 'nodejs')
+depends=('arkos-core' 'arkos-kraken' 'git' 'nodejs' 'npm')
 makedepends=('nodejs')
 provides=('arkos-core')
 install=('arkos-genesis.install')
 source=("$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
-md5sums=('12c02c32f0a0f8469f89a2bbbb251b8e')
+md5sums=('f77e4b8f04ef634cfcc8e53d9fe3211c')
 
 build() {
   cd "$srcdir"

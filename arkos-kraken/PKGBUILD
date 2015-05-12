@@ -1,21 +1,21 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-kraken
-pkgver=0.7.0beta2
+pkgver=0.7.0beta3.1
 pkgrel=1
 pkgdesc="REST API server for arkOS"
 
 arch=('any')
 url="https://arkos.io/"
 license=('GPLv3')
-depends=('python2' 'arkos-core' 'redis' 'python2-flask' 'python2-redis' 
+depends=('python2' 'arkos-core' 'redis' 'python2-flask' 'python2-redis'
     'python2-flask-cors' 'python2-itsdangerous')
 makedepends=('python2')
 provides=('arkos-kraken')
-source=("krakend.service" 
+source=("krakend.service"
     "$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
-md5sums=('bf713c0c4f3fd28908b325a253a0619a'
-         'a8c1ddf74d78d0ed5e1d1d0cf931afdc')
+md5sums=('addaed1a4b121d4c2b6a5e290fb6127f'
+         '24f14da2dd307d54ed81097b4a43ee4b')
 
 build() {
   cd "$srcdir"
