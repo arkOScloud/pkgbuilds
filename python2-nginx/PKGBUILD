@@ -1,7 +1,7 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=python2-nginx
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Create and modify nginx serverblock configs in Python"
 
@@ -11,7 +11,7 @@ license=('GPLv3')
 depends=('python2')
 makedepends=('python2' 'python2-distribute')
 source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/coderouge/python-nginx/repository/archive.tar.gz?ref=$pkgver")
-md5sums=('f3979809b4e34eb98a90b40910bde8e9')
+md5sums=('72b8d0a0f5d5c5cfa27de67e5d48fb48')
 
 build() {
   cd "$srcdir"

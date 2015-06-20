@@ -1,7 +1,7 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-core
-pkgver=0.7.0.1
+pkgver=0.7.0.2
 pkgrel=1
 pkgdesc="Python system management libraries for arkOS"
 
@@ -17,7 +17,7 @@ makedepends=('python2')
 provides=('arkos-core')
 source=("$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
 backup=('etc/arkos/settings.json' 'etc/arkos/policies.json')
-md5sums=('dbf4aeeabc205c0fea6b5094faec487a')
+md5sums=('222024e1d6e55bbfe96348a96aaa1028')
 
 build() {
   cd "$srcdir"
