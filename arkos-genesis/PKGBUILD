@@ -1,7 +1,7 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-genesis
-pkgver=0.7.0.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Web interface for managing arkOS"
 
