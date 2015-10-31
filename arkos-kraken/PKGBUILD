@@ -1,7 +1,7 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-kraken
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="REST API server for arkOS"
 
@@ -15,7 +15,7 @@ provides=('arkos-kraken')
 source=("krakend.service"
     "$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
 md5sums=('addaed1a4b121d4c2b6a5e290fb6127f'
-         '24f2491d5d3bd08b89155861a96353a1')
+         'fc65cf47353482ea6492580a9859fd26')
 
 build() {
   cd "$srcdir"
