@@ -5,7 +5,7 @@ pkgver=0.6.0
 pkgrel=1
 pkgdesc="Python bindings for iptables"
 
-arch=('x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://ldx.github.com/python-iptables/"
 license=('Apache')
 depends=('python2')
