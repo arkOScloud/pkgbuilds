@@ -1,7 +1,13 @@
 post_install(){
     echo " >> Installing global binaries..."
-    npm install -g bower ember-cli@0.2.0 || echo " >> FAILED to install npm global binaries. Please try to install manually."
+    npm install -g bower ember-cli@1.13.13 || echo " >> FAILED to install npm global binaries. Please try to install manually."
     echo " >> Installing npm dependencies..."
+    if [ -d "/var/lib/arkos/genesis/node_modules" ]; then
+      rm -rf /var/lib/arkos/genesis/node_modules
+    fi
+    if [ -d "/var/lib/arkos/genesis/bower_components" ]; then
+      rm -rf /var/lib/arkos/genesis/bower_components
+    fi
     cd /var/lib/arkos/genesis
     npm install || echo " >> FAILED to install npm dependencies. Please try to install manually."
     echo " >> Installing bower dependencies..."
@@ -11,6 +17,12 @@ post_install(){
 }
 post_upgrade(){
     echo " >> Updating npm dependencies..."
+    if [ -d "/var/lib/arkos/genesis/node_modules" ]; then
+      rm -rf /var/lib/arkos/genesis/node_modules
+    fi
+    if [ -d "/var/lib/arkos/genesis/bower_components" ]; then
+      rm -rf /var/lib/arkos/genesis/bower_components
+    fi
     cd /var/lib/arkos/genesis
     npm install || echo " >> FAILED to update npm dependencies. Please try to update manually."
     echo " >> Updating bower dependencies..."
