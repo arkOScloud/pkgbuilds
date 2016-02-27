@@ -1,0 +1,30 @@
+# Maintainer: Jacob Cook <jacob at citizenweb dot io>
+
+pkgname=python2-arkosclient
+pkgver=0.2
+pkgrel=1
+pkgdesc="Python bindings for remote management of arkOS servers via their Kraken REST API"
+
+arch=('any')
+url="https://git.coderouge.co/arkOS/pyarkosclient.git"
+license=('GPLv3')
+depends=('python2')
+makedepends=('python2' 'python2-distribute' 'python2-requests' 'python2-aniso8601')
+source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/pyarkosclient/repository/archive.tar.gz?ref=$pkgver")
+md5sums=('1306ab37ae41fe00de26ff569cacca37')
+
+build() {
+  cd "$srcdir"
+  tar xvzf "$pkgname-$pkgver.tar.gz"
+
+  msg2 'Replacing python shebang by python2 shebang...'
+  find . -type f -exec sed -i \
+    -e'1s|^#!/usr/bin/env python$|#!/usr/bin/env python2|' \
+    -e '1s|^#!/usr/bin/python$|#!/usr/bin/env python2|' \
+    "{}" \;
+}
+
+package() {
+  cd "$srcdir/pyarkosclient-$pkgver-"*
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+}
