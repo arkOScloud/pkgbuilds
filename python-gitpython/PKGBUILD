@@ -1,14 +1,14 @@
 # Maintainer: Jon Bergli Heier <snakebite@jvnv.net>
 
-pkgname=python2-gitpython
+pkgname=python-gitpython
 pkgver=0.3.2.1
 pkgrel=1
 pkgdesc="A python library used to interact with Git repositories"
 arch=('any')
 url="http://gitorious.org/git-python"
 license=('BSD')
-depends=('python2' 'git' 'python2-gitdb>=0.6.0')
-makedepends=('python2' 'python2-distribute')
+depends=('python' 'git' 'python-gitdb>=0.6.0')
+makedepends=('python' 'python-distribute')
 conflicts=('gitpython-git' 'gitpython')
 replaces=('gitpython')
 source=("http://pypi.python.org/packages/source/G/GitPython/GitPython-${pkgver}.tar.gz")
@@ -16,7 +16,7 @@ md5sums=('a8e8d3875d71c09993d078527d8c327e')
 
 package() {
   cd "$srcdir/GitPython-${pkgver}"
-  python2 setup.py install --root="$pkgdir/" --optimize=1 || return 1
+  python setup.py install --root="$pkgdir/" --optimize=1 || return 1
   install -D -m 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 

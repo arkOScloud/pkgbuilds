@@ -1,0 +1,21 @@
+# Maintainer: Jacob Cook <jacob at citizenweb dot io>
+
+pkgname=python-cryptsetup
+pkgver=1.7.1
+pkgrel=1
+pkgdesc='Python bindings for cryptsetup'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+license=(LGPL)
+url='https://gitlab.com/cryptsetup/cryptsetup'
+depends=(python cryptsetup)
+source=(https://gitlab.com/cryptsetup/cryptsetup/repository/archive.tar.gz)
+sha1sums=('0cd83026a8e1e6e834caf5dd29d839490b4c67de')
+
+package() {
+  cd "$srcdir/cryptsetup-master"*
+  ./autogen.sh --enable-python --with-python_version=3
+  make
+  make install DESTDIR=$pkgdir
+  rm -r "$pkgdir/usr/include" "$pkgdir/usr/sbin" "$pkgdir/usr/share"
+  rm -r "$pkgdir/usr/lib/libcryptsetup"* "$pkgdir/usr/lib/pkgconfig"
+}

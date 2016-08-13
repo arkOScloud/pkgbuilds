@@ -10,7 +10,7 @@ pkgdesc='Configurations for arkOS OpenLDAP server'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.openldap.org/'
 license=('custom')
-depends=('openldap' 'nss-pam-ldapd' 'libldap' 'pwgen' 'patch')
+depends=('sudo' 'openldap' 'nss-pam-ldapd' 'libldap' 'pwgen' 'patch')
 backup=('etc/arkos/arkos-slapd.conf' 'etc/arkos/secrets.json')
 source=('001-add-ldap-to-system-auth.patch'
         '002-add-ldap-to-su.patch'
@@ -19,7 +19,7 @@ source=('001-add-ldap-to-system-auth.patch'
         '005-add-ldap-to-system-login.patch'
         '006-add-ldap-to-nsswitch.patch'
         '007-add-ldap-to-nslcd.patch'
-        'slapd.conf' 'ldap.conf' 'secrets.json' 'base.ldif' 
+        'slapd.conf' 'ldap.conf' 'secrets.json' 'base.ldif'
         'mailserver.schema' 'samba.schema')
 install=arkos-openldap.install
 md5sums=('34237541e117ad5e20d85f3dee748d53'

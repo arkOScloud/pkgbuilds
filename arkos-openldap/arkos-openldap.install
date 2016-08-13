@@ -19,7 +19,7 @@ post_install(){
 	chmod 600 /etc/arkos/secrets.json
 	cp /etc/arkos/arkos-slapd.conf /etc/openldap/slapd.conf
 	cp /etc/arkos/arkos-ldap.conf /etc/openldap/ldap.conf
-	echo "" | slapadd -f /etc/openldap/slapd.conf
+	echo "" | slapadd -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d/
 	slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d/
 	chown -R ldap:ldap /etc/openldap/slapd.d/
 	slapindex

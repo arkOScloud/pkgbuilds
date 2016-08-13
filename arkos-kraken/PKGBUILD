@@ -1,18 +1,18 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-kraken
-pkgver=0.7.1.3
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="REST API server for arkOS"
 
 arch=('any')
 url="https://arkos.io/"
 license=('GPLv3')
-depends=('python2' 'arkos-core' 'redis' 'python2-flask' 'python2-redis'
-    'python2-flask-cors' 'python2-itsdangerous' 'avahi')
-makedepends=('python2')
+depends=('python' 'arkos-core' 'redis' 'python-flask' 'python-redis'
+    'python-flask-cors' 'python-itsdangerous' 'avahi')
+makedepends=('python')
 provides=('arkos-kraken')
-source=("krakend.service" "avahi.service" 
+source=("krakend.service" "avahi.service"
     "$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
 md5sums=('addaed1a4b121d4c2b6a5e290fb6127f'
          'dc99cf20c9a45d6fb3c392feb29d189f'
@@ -26,7 +26,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
   mkdir -p $pkgdir/etc/systemd/system/multi-user.target.wants
   install -Dm644 "$srcdir"/krakend.service "$pkgdir"/usr/lib/systemd/system/krakend.service
   install -Dm644 "$srcdir"/avahi.service "$pkgdir"/etc/avahi/services/arkos.service
