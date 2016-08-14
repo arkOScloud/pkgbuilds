@@ -9,7 +9,7 @@ license=(LGPL)
 url='https://gitlab.com/cryptsetup/cryptsetup'
 depends=(python cryptsetup)
 source=(https://gitlab.com/cryptsetup/cryptsetup/repository/archive.tar.gz)
-sha1sums=('0cd83026a8e1e6e834caf5dd29d839490b4c67de')
+sha1sums=('05074ebe5ee2aa83340908144bd134b45e038284')
 
 package() {
   cd "$srcdir/cryptsetup-master"*
