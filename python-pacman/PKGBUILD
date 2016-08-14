@@ -1,7 +1,7 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=python-pacman
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Simple Python interface to Arch Linux package manager (pacman)"
 
@@ -11,7 +11,7 @@ license=('GPLv3')
 depends=('python')
 makedepends=('python' 'python-distribute')
 source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/coderouge/python-pacman/repository/archive.tar.gz?ref=$pkgver")
-md5sums=('a1e7c55ad964eeb101083a6b1c8f8158')
+md5sums=('b688935c3369f6850b42c84f0d0b0374')
 
 build() {
   cd "$srcdir"
@@ -19,6 +19,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/python-pacman.git"
+  cd "$srcdir/python-pacman-$pkgver-"*
   python setup.py install --root="$pkgdir/" --optimize=1
 }
