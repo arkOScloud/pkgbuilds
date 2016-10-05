@@ -1,7 +1,11 @@
 post_install() {
-  getent group arkos >/dev/null || groupadd --system arkos
-  getent passwd arkos >/dev/null || useradd --system -g arkos -s /bin/false arkos
-
+  local REDISPASS=$(pwgen 16 1)
   install -dm700 var/lib/arkos-redis
-  chown arkos:arkos var/lib/arkos-redis
+  chown redis:redis var/lib/arkos-redis
+  sed -i "s|%REDISPASS%|"$REDISPASS"|" /etc/arkos/arkos-redis.conf
+  if [ -f /etc/arkos/secrets.json ] then
+    sed -i '$s/}/, "redis": "'$REDISPASS'"}/' /etc/arkos/secrets.json
+  else
+    echo '{"redis": "'$REDISPASS'"}' > /etc/arkos/secrets.json
+  fi
 }

@@ -15,7 +15,11 @@ post_install(){
 	cp /usr/share/doc/sudo/schema.OpenLDAP /etc/openldap/schema/sudo.schema
 	local LDAP_PWD=$(pwgen 16 1)
 	sed -i "s|%ROOTPW%|$(slappasswd -h '{CRYPT}' -c '$1$%.8s' -s $LDAP_PWD)|" /etc/arkos/arkos-slapd.conf
-	echo '{"ldap": "'$LDAP_PWD'"}' > /etc/arkos/secrets.json
+	if [ -f /etc/arkos/secrets.json ] then
+	  sed -i '$s/}/, "ldap": "'$LDAP_PWD'"}/' /etc/arkos/secrets.json
+  else
+	  echo '{"ldap": "'$LDAP_PWD'"}' > /etc/arkos/secrets.json
+	fi
 	chmod 600 /etc/arkos/secrets.json
 	cp /etc/arkos/arkos-slapd.conf /etc/openldap/slapd.conf
 	cp /etc/arkos/arkos-ldap.conf /etc/openldap/ldap.conf
@@ -29,9 +33,9 @@ post_install(){
 	chown -R ldap:ldap /var/lib/openldap/openldap-data
 }
 post_upgrade(){
-    echo " >> Updating arkOS LDAP configuration..."
-    systemctl stop slapd
-    cp /etc/arkos/arkos-slapd.conf /etc/openldap/slapd.conf
+  echo " >> Updating arkOS LDAP configuration..."
+  systemctl stop slapd
+  cp /etc/arkos/arkos-slapd.conf /etc/openldap/slapd.conf
 	cp /etc/arkos/arkos-ldap.conf /etc/openldap/ldap.conf
 	slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d/
 	chown -R ldap:ldap /etc/openldap/slapd.d/

@@ -1,10 +1,11 @@
 # $Id$
 # Maintainer: Jacob Cook <jacob@citizenweb.io>
 
-# NOTE: This only installs configurations needed to run a compatible instance of OpenLDAP for arkOS. See the main openldap package for code.
+# NOTE: This only installs configurations needed to run a compatible instance of OpenLDAP for arkOS.
+# See the main openldap package for code.
 
 pkgname=arkos-openldap
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc='Configurations for arkOS OpenLDAP server'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

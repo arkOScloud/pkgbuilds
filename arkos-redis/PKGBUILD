@@ -1,16 +1,17 @@
 # $Id$
 # Maintainer: Jacob Cook <jacob@citizenweb.io>
 
-# NOTE: This only installs configurations needed to run a separate instance of Redis for arkOS. See the main redis package for code.
+# NOTE: This only installs configurations needed to run a separate instance of Redis for arkOS.
+# See the main redis package for code.
 
 pkgname=arkos-redis
-pkgver=0.1
+pkgver=1.0
 pkgrel=1
 pkgdesc='Configurations for arkOS Redis storage'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('any')
 url='http://redis.io/'
 license=('BSD')
-depends=('redis')
+depends=('redis' 'pwgen')
 backup=('etc/arkos/arkos-redis.conf')
 install=(arkos-redis.install)
 source=(arkos-redis.service

@@ -3,7 +3,7 @@ Description=Advanced key-value store
 After=network.target
 
 [Service]
-User=arkos
+User=redis
 ExecStart=/usr/bin/redis-server /etc/arkos/arkos-redis.conf
 ExecStop=/usr/bin/redis-cli shutdown
 
