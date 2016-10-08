@@ -1,0 +1,30 @@
+# Maintainer: Jacob Cook <jacob at citizenweb dot io>
+
+pkgname=arkos-configs
+pkgver=1.0
+pkgrel=1
+pkgdesc='Configurations for arkOS dependencies'
+arch=('any')
+url='https://arkos.io/'
+license=('GPLv3')
+source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/configs/repository/archive.tar.gz?ref=$pkgver")
+md5sums=('09b98e71569cae3ccf0c873dff3c77bc')
+
+
+build() {
+  cd "$srcdir"
+  tar xzf "$pkgname-$pkgver.tar.gz"
+}
+
+package() {
+  for folder in "$srcdir"/configs-*/* ; do
+    if [ -d "$folder" ] ; then
+      install -d "$pkgdir"/usr/share/arkos/$(basename "$folder")
+      for file in "$folder"/* ; do
+        install -Dm644 "$file" "$pkgdir"/usr/share/arkos/$(basename "$folder")/$(basename "$file")
+      done
+    else
+      install -Dm644 "$folder" "$pkgdir"/usr/share/arkos/$(basename "$folder")
+    fi
+  done
+}
