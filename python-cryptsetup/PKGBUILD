@@ -1,21 +1,23 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=python-cryptsetup
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='Python bindings for cryptsetup'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=(LGPL)
-url='https://gitlab.com/cryptsetup/cryptsetup'
-depends=(python cryptsetup)
-source=(https://gitlab.com/cryptsetup/cryptsetup/repository/archive.tar.gz)
-sha1sums=('05074ebe5ee2aa83340908144bd134b45e038284')
+url='https://git.coderouge.co/arkOS/python-cryptsetup'
+depends=('python' 'cryptsetup')
+source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/python-cryptsetup/repository/archive.tar.gz?ref=$pkgver")
+sha1sums=('ef98060b1e41884c093fc435bdf02d2e016d634f')
+
+
+build() {
+  cd "$srcdir"
+  tar xvzf "$pkgname-$pkgver.tar.gz"
+}
 
 package() {
-  cd "$srcdir/cryptsetup-master"*
-  ./autogen.sh --enable-python --with-python_version=3
-  make
-  make install DESTDIR=$pkgdir
-  rm -r "$pkgdir/usr/include" "$pkgdir/usr/sbin" "$pkgdir/usr/share"
-  rm -r "$pkgdir/usr/lib/libcryptsetup"* "$pkgdir/usr/lib/pkgconfig"
+  cd "$srcdir/$pkgname-$pkgver-"*
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
