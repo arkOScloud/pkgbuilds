@@ -1,14 +1,14 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-configs
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Configurations for arkOS dependencies'
 arch=('any')
 url='https://arkos.io/'
 license=('GPLv3')
 source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/configs/repository/archive.tar.gz?ref=$pkgver")
-md5sums=('09b98e71569cae3ccf0c873dff3c77bc')
+md5sums=('e86cea6123bd82b931ce67bc3fb60a75')
 
 
 build() {
