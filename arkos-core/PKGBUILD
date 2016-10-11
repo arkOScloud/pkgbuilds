@@ -11,8 +11,8 @@ license=('GPLv3')
 depends=('binutils' 'python' 'arkos-configs' 'python-ntplib' 'python-nginx' 'python-dbus'
     'python-gobject' 'python-cryptsetup' 'python-pyparted' 'python-pyldap' 'python-psutil'
     'python-netifaces' 'python-gitpython' 'python-gnupg' 'python-pacman' 'python-click'
-    'python-requests' 'python-cryptography' 'nginx' 'git' 'python-miniupnpc'
-    'python-semantic-version' 'fail2ban' 'supervisor')
+    'python-requests' 'python-cryptography' 'nginx' 'git' 'python-miniupnpc' 'openldap'
+    'python-semantic-version' 'fail2ban' 'supervisor' 'ruby' 'nodejs' 'npm' 'ntp' 'cronie')
 makedepends=('python')
 provides=('arkos-core')
 install='arkos-core.install'
