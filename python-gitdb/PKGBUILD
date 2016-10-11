@@ -1,7 +1,7 @@
 # Maintainer: Jon Bergli Heier <snakebite@jvnv.net>
 
 pkgname=python-gitdb
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="IO of git-style object databases"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -10,8 +10,8 @@ license=('BSD')
 makedepends=('python' 'python-distribute')
 depends=('python' 'python-smmap>=0.8.5')
 source=("http://pypi.python.org/packages/source/g/gitdb/gitdb-${pkgver}.tar.gz")
+md5sums=('44e4366b8bdfd306b075c3a52c96ae1a')
 
-md5sums=('c608b9edc372a4ef07b14a1b2dd44e1f')
 
 package() {
   cd "$srcdir/gitdb-$pkgver"
