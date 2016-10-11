@@ -8,23 +8,26 @@ pkgdesc="Python system management libraries for arkOS"
 arch=('any')
 url="https://arkos.io/"
 license=('GPLv3')
-depends=('binutils' 'python' 'python2-ntplib' 'python2-nginx' 'python-dbus'
-    'python2-cryptsetup' 'python2-pyparted' 'python2-ldap' 'python2-psutil'
-    'python-netifaces' 'python2-gitpython' 'python2-gnupg' 'python2-pacman'
-    'arkos-openldap' 'python-requests' 'python-cryptography' 'nginx' 'git'
-    'fail2ban' 'supervisor')
+depends=('binutils' 'python' 'arkos-configs' 'python-ntplib' 'python-nginx' 'python-dbus'
+    'python-gobject' 'python-cryptsetup' 'python-pyparted' 'python-pyldap' 'python-psutil'
+    'python-netifaces' 'python-gitpython' 'python-gnupg' 'python-pacman' 'python-click'
+    'python-requests' 'python-cryptography' 'nginx' 'git' 'python-miniupnpc'
+    'python-semantic-version' 'fail2ban' 'supervisor')
 makedepends=('python')
 provides=('arkos-core')
-source=("$pkgname-$pkgver.tar.gz"::"https://pkg.arkos.io/resources/$pkgname-$pkgver.tar.gz")
-backup=('etc/arkos/settings.json' 'etc/arkos/policies.json')
-md5sums=('d0075a68e2d75f8b1dd13cb5ca29b9d0')
+install='arkos-core.install'
+source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/core/repository/archive.tar.gz?ref=$pkgver")
+md5sums=('8892d6a290da8223de5d88d89a9d6888')
+
 
 build() {
   cd "$srcdir"
   tar xvzf "$pkgname-$pkgver.tar.gz"
+  cd "core-"*
+  python setup.py bdist_wheel
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "$srcdir/core-"*
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps dist/arkos_core-$pkgver-py3-none-any.whl
 }
