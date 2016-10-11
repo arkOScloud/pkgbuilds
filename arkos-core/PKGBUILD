@@ -8,16 +8,17 @@ pkgdesc="Python system management libraries for arkOS"
 arch=('any')
 url="https://arkos.io/"
 license=('GPLv3')
-depends=('binutils' 'python' 'arkos-configs' 'python-ntplib' 'python-nginx' 'python-dbus'
-    'python-gobject' 'python-cryptsetup' 'python-pyparted' 'python-pyldap' 'python-psutil'
-    'python-netifaces' 'python-gitpython' 'python-gnupg' 'python-pacman' 'python-click'
-    'python-requests' 'python-cryptography' 'nginx' 'git' 'python-miniupnpc' 'openldap'
-    'python-semantic-version' 'fail2ban' 'supervisor' 'ruby' 'nodejs' 'npm' 'ntp' 'cronie')
+depends=('binutils' 'dbus-glib' 'parted' 'python' 'arkos-configs' 'python-ntplib' 'python-nginx'
+    'python-dbus' 'python-gobject' 'python-cryptsetup' 'python-pyparted' 'python-pyldap'
+    'python-psutil' 'python-netifaces' 'python-gitpython' 'python-gnupg' 'python-pacman'
+    'python-click' 'python-requests' 'python-cryptography' 'nginx' 'git' 'python-miniupnpc'
+    'openldap' 'python-semantic-version' 'fail2ban' 'supervisor' 'ruby' 'nodejs' 'npm' 'ntp'
+    'cronie' 'nss-pam-ldapd')
 makedepends=('python')
 provides=('arkos-core')
 install='arkos-core.install'
 source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/core/repository/archive.tar.gz?ref=$pkgver")
-md5sums=('8892d6a290da8223de5d88d89a9d6888')
+md5sums=('f2a1e076818dd31ffe4e42aa22d4e101')
 
 
 build() {
