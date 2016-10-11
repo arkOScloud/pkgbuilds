@@ -7,7 +7,7 @@
 # information on Python packaging.
 
 pkgname=python-pyldap
-pkgver=2.4.25
+pkgver=2.4.25.1
 pkgrel=2
 pkgdesc="Python modules for implementing LDAP clients"
 _pipname=pyldap
@@ -24,7 +24,8 @@ backup=()
 options=(!emptydirs)
 install=
 source=(https://pypi.python.org/packages/source/p/${_pipname}/${_pipname}-${pkgver}.tar.gz)
-md5sums=('dbcb7849b506b58d22cb711564df58a7')
+md5sums=('ea83840b6d76f7399981ba6dc89136d1')
+
 
 package() {
   cd "$srcdir/$_pipname-$pkgver"
