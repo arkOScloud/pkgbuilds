@@ -13,7 +13,7 @@ depends=('binutils' 'dbus-glib' 'parted' 'python' 'arkos-configs' 'python-ntplib
     'python-psutil' 'python-netifaces' 'python-gitpython' 'python-gnupg' 'python-pacman'
     'python-click' 'python-requests' 'python-cryptography' 'nginx' 'git' 'python-miniupnpc'
     'openldap' 'python-semantic-version' 'fail2ban' 'supervisor' 'ruby' 'nodejs' 'npm' 'ntp'
-    'cronie' 'nss-pam-ldapd')
+    'cronie' 'nss-pam-ldapd' 'python-free-tls-certificates')
 makedepends=('python')
 provides=('arkos-core')
 install='arkos-core.install'
