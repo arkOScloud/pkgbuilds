@@ -10,7 +10,7 @@ license=('GPLv3')
 depends=('arkos-core' 'arkos-kraken')
 makedepends=('nodejs' 'npm' 'phantomjs' 'bower')
 source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/genesis/repository/archive.tar.gz?ref=$pkgver")
-md5sums=('27bea2f61692e816c4f4ab8ef4753439')
+md5sums=('d28ae8aa510e36ad0475d599379697ad')
 
 
 build() {

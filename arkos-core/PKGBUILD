@@ -18,7 +18,7 @@ makedepends=('python')
 provides=('arkos-core')
 install='arkos-core.install'
 source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/core/repository/archive.tar.gz?ref=$pkgver")
-md5sums=('f2a1e076818dd31ffe4e42aa22d4e101')
+md5sums=('ac9a1b70daa6f8f54db15d5bad63291f')
 
 
 build() {
