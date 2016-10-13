@@ -8,10 +8,10 @@
 
 pkgname=python-pyldap
 pkgver=2.4.25.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python modules for implementing LDAP clients"
 _pipname=pyldap
-arch=(any)
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/pyldap/pyldap"
 license=('PSFL')
 groups=()
