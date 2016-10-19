@@ -1,24 +1,25 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-core
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Python system management libraries for arkOS"
 
 arch=('any')
 url="https://arkos.io/"
 license=('GPLv3')
-depends=('binutils' 'dbus-glib' 'parted' 'python' 'arkos-configs' 'python-ntplib' 'python-nginx'
-    'python-dbus' 'python-gobject' 'python-cryptsetup' 'python-pyparted' 'python-pyldap'
-    'python-psutil' 'python-netifaces' 'python-gitpython' 'python-gnupg' 'python-pacman'
-    'python-click' 'python-requests' 'python-cryptography' 'nginx' 'git' 'python-miniupnpc'
-    'openldap' 'python-semantic-version' 'fail2ban' 'supervisor' 'ruby' 'nodejs' 'npm' 'ntp'
-    'cronie' 'nss-pam-ldapd' 'python-free-tls-certificates')
+depends=('binutils' 'dbus-glib' 'parted' 'python' 'python2' 'arkos-configs' 'python-ntplib'
+    'python-nginx' 'python-dbus' 'python-gobject' 'python-cryptsetup' 'python-pyparted'
+    'python-pyldap' 'python-psutil' 'python-netifaces' 'python-gitpython' 'python-gnupg'
+    'python-pacman' 'python-click' 'python-requests' 'python-cryptography' 'nginx' 'git'
+    'python-miniupnpc' 'openldap' 'python-semantic-version' 'fail2ban' 'supervisor' 'ruby'
+    'nodejs' 'npm' 'ntp' 'cronie' 'nss-pam-ldapd' 'python-free-tls-certificates' 'python-pip'
+    'python2-pip' 'python-passlib')
 makedepends=('python')
 provides=('arkos-core')
 install='arkos-core.install'
 source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/core/repository/archive.tar.gz?ref=$pkgver")
-md5sums=('ac9a1b70daa6f8f54db15d5bad63291f')
+md5sums=('7f7cd0ac56d872a509ba2c67595b888c')
 
 
 build() {

@@ -1,7 +1,7 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-genesis
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Web interface for managing arkOS"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPLv3')
 depends=('arkos-core' 'arkos-kraken')
 makedepends=('nodejs' 'npm' 'phantomjs' 'bower')
 source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/genesis/repository/archive.tar.gz?ref=$pkgver")
-md5sums=('641c7aa250907924a1308ef6f7d53fb0')
+md5sums=('f21ae4171a091948f09df1eb5223c8ec')
 
 
 build() {

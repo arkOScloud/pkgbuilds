@@ -1,6 +1,6 @@
 post_install() {
   echo -e "\e[32m>> Initializing configurations...\e[0m"
-  arkosctl init ldap --yes
-  arkosctl init nslcd
-  arkosctl init nginx
+  LANG=en_US.UTF-8 arkosctl init ldap --yes
+  LANG=en_US.UTF-8 arkosctl init nslcd
+  LANG=en_US.UTF-8 arkosctl init nginx
 }

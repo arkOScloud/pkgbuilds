@@ -1,4 +1,4 @@
 post_install() {
   echo -e "\e[32m>> Initializing configurations...\e[0m"
-  arkosctl init redis
+  LANG=en_US.UTF-8 arkosctl init redis
 }

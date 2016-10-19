@@ -1,7 +1,7 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-kraken
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="REST API server for arkOS"
 
@@ -17,7 +17,7 @@ source=("krakend.service" "avahi.service"
     "$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/kraken/repository/archive.tar.gz?ref=$pkgver")
 md5sums=('addaed1a4b121d4c2b6a5e290fb6127f'
          'dc99cf20c9a45d6fb3c392feb29d189f'
-         '6fe7f1904067654f5ab72ba7fb28a58f')
+         '5f039ff2e94aa5c4e7207ca7c9d16ffb')
 
 
  build() {
