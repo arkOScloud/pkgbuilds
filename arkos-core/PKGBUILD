@@ -1,7 +1,7 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=arkos-core
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Python system management libraries for arkOS"
 
@@ -14,12 +14,12 @@ depends=('binutils' 'dbus-glib' 'parted' 'python' 'python2' 'arkos-configs' 'pyt
     'python-pacman' 'python-click' 'python-requests' 'python-cryptography' 'nginx' 'git'
     'python-miniupnpc' 'openldap' 'python-semantic-version' 'fail2ban' 'supervisor' 'ruby'
     'nodejs' 'npm' 'ntp' 'cronie' 'nss-pam-ldapd' 'python-free-tls-certificates' 'python-pip'
-    'python2-pip' 'python-passlib')
+    'python2-pip' 'python-passlib' 'python-wheel' 'python2-wheel')
 makedepends=('python')
 provides=('arkos-core')
 install='arkos-core.install'
 source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/arkOS/core/repository/archive.tar.gz?ref=$pkgver")
-md5sums=('7f7cd0ac56d872a509ba2c67595b888c')
+md5sums=('83a9afa04b9d1bc86003bdf7f46750bf')
 
 
 build() {
