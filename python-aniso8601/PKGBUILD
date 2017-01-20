@@ -1,7 +1,7 @@
 _pkgbase=aniso8601
 pkgname=python-aniso8601
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for parsing ISO 8601 strings"
 arch=('any')
 url="http://pypi.python.org/pypi/aniso8601"
