@@ -2,7 +2,7 @@
 
 pkgname=arkos-kraken
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="REST API server for arkOS"
 
 arch=('any')

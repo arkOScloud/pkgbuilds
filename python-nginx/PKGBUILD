@@ -1,16 +1,16 @@
 # Maintainer: Jacob Cook <jacob at citizenweb dot io>
 
 pkgname=python-nginx
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Create and modify nginx serverblock configs in Python"
 
 arch=('any')
-url="https://git.coderouge.co/coderouge/python-nginx"
+url="https://github.com/peakwinter/python-nginx"
 license=('GPLv3')
 depends=('python')
 makedepends=('python' 'python-distribute')
-source=("$pkgname-$pkgver.tar.gz"::"https://git.coderouge.co/coderouge/python-nginx/repository/archive.tar.gz?ref=$pkgver")
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/peakwinter/python-nginx/archive/$pkgver.tar.gz")
 md5sums=('f647bcbc1315437fc26959805fe3e781')
 
 
@@ -20,6 +20,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/python-nginx-"*
+  cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }

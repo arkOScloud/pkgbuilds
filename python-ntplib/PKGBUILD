@@ -1,7 +1,7 @@
 _pkgbase=ntplib
 pkgname=python-ntplib
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple interface to query NTP servers from Python"
 arch=('any')
 url="http://pypi.python.org/pypi/ntplib"

@@ -3,7 +3,7 @@
 
 pkgname=python-miniupnpc
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Repack of the original miniupnp project to facilitate install via PyPi"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 depends=('python')

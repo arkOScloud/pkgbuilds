@@ -2,7 +2,7 @@
 
 pkgname=arkos-core
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python system management libraries for arkOS"
 
 arch=('any')
